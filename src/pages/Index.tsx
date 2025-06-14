@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import StarFieldCanvas from '@/components/StarField';
 import Planet3D from '@/components/Planet3D';
 import ProjectCard from '@/components/ProjectCard';
@@ -174,6 +176,29 @@ const Index = () => {
     <div className="min-h-screen text-white overflow-x-hidden">
       <StarFieldCanvas />
       
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 p-6">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <Link to="/" className="text-2xl font-orbitron font-bold gradient-text">
+            RS
+          </Link>
+          <div className="flex gap-6">
+            <Link to="/about" className="text-white hover:text-cosmic-blue transition-colors">
+              About
+            </Link>
+            <Link to="/projects" className="text-white hover:text-cosmic-blue transition-colors">
+              Projects
+            </Link>
+            <Link to="/skills" className="text-white hover:text-cosmic-blue transition-colors">
+              Skills
+            </Link>
+            <Link to="/contact" className="text-white hover:text-cosmic-blue transition-colors">
+              Contact
+            </Link>
+          </div>
+        </div>
+      </nav>
+      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <div className="absolute right-10 top-20 w-96 h-96 opacity-30">
@@ -215,9 +240,9 @@ const Index = () => {
             <Button
               size="lg"
               className="px-8 py-4 bg-gradient-to-r from-cosmic-blue to-cosmic-purple hover:from-cosmic-purple hover:to-cosmic-cyan transition-all duration-300 font-orbitron font-semibold text-lg animate-pulse-glow"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              asChild
             >
-              View Projects
+              <Link to="/projects">View Projects</Link>
             </Button>
             <Button
               variant="outline"
@@ -225,9 +250,7 @@ const Index = () => {
               className="px-8 py-4 border-cosmic-blue text-cosmic-blue hover:bg-cosmic-blue/10 font-orbitron font-semibold text-lg"
               asChild
             >
-              <a href="/about">
-                View Full Profile
-              </a>
+              <Link to="/about">View Full Profile</Link>
             </Button>
           </motion.div>
         </motion.div>
