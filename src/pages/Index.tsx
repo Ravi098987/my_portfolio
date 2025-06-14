@@ -11,7 +11,7 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
 
-  // Sample projects data
+  // Enhanced projects data with more ML and Full Stack projects
   const projects = [
     {
       title: "AI-Powered Recommendation Engine",
@@ -22,12 +22,56 @@ const Index = () => {
       liveUrl: "https://ai-recommendations-demo.vercel.app"
     },
     {
+      title: "Computer Vision Object Detection",
+      description: "Advanced CV system using YOLO and CNN architectures for real-time object detection with 89% mAP score on COCO dataset.",
+      techStack: ["Python", "PyTorch", "OpenCV", "CUDA", "FastAPI"],
+      category: "Machine Learning",
+      githubUrl: "https://github.com/ravishankar-singh/cv-detection"
+    },
+    {
+      title: "NLP Sentiment Analysis API",
+      description: "Multi-language sentiment analysis using transformer models (BERT/RoBERTa) with real-time processing for social media monitoring.",
+      techStack: ["PyTorch", "Transformers", "FastAPI", "Docker", "AWS"],
+      category: "Machine Learning",
+      githubUrl: "https://github.com/ravishankar-singh/nlp-sentiment"
+    },
+    {
+      title: "Time Series Forecasting Platform",
+      description: "ML platform for financial time series prediction using LSTM, Prophet, and ARIMA models with 92% accuracy on stock predictions.",
+      techStack: ["Python", "TensorFlow", "Prophet", "React", "PostgreSQL"],
+      category: "Machine Learning",
+      githubUrl: "https://github.com/ravishankar-singh/time-series-ml"
+    },
+    {
       title: "Real-time Chat Application",
       description: "Full-stack chat app with real-time messaging, file sharing, and video calls. Features include end-to-end encryption and multi-platform support.",
       techStack: ["React", "Node.js", "Socket.io", "MongoDB", "WebRTC"],
-      category: "Web Dev",
+      category: "Full Stack",
       githubUrl: "https://github.com/ravishankar-singh/realtime-chat",
       liveUrl: "https://chat-app-demo.vercel.app"
+    },
+    {
+      title: "E-commerce Microservices Platform",
+      description: "Scalable e-commerce platform using microservices architecture with payment gateway integration, inventory management, and analytics dashboard.",
+      techStack: ["Node.js", "React", "Docker", "Kubernetes", "PostgreSQL", "Redis"],
+      category: "Full Stack",
+      githubUrl: "https://github.com/ravishankar-singh/ecommerce-microservices",
+      liveUrl: "https://ecommerce-demo.vercel.app"
+    },
+    {
+      title: "Social Media Analytics Dashboard",
+      description: "Full-stack application for social media analytics with real-time data visualization, sentiment analysis, and user engagement metrics.",
+      techStack: ["Next.js", "TypeScript", "Node.js", "MongoDB", "Chart.js"],
+      category: "Full Stack",
+      githubUrl: "https://github.com/ravishankar-singh/social-analytics"
+    },
+    {
+      title: "Blockchain Voting System",
+      description: "Secure and transparent voting platform built on Ethereum blockchain with smart contracts ensuring immutable and verifiable elections.",
+      techStack: ["Solidity", "Web3.js", "React", "Node.js", "IPFS"],
+      category: "Full Stack",
+      githubUrl: "https://github.com/ravishankar-singh/blockchain-voting",
+      liveUrl: "https://blockchain-voting-demo.vercel.app"
     },
     {
       title: "Smart City Traffic Optimizer",
@@ -35,21 +79,6 @@ const Index = () => {
       techStack: ["OpenCV", "Python", "React", "FastAPI", "PostgreSQL"],
       category: "Hackathons",
       githubUrl: "https://github.com/ravishankar-singh/traffic-optimizer"
-    },
-    {
-      title: "Blockchain Voting System",
-      description: "Secure and transparent voting platform built on Ethereum blockchain with smart contracts ensuring immutable and verifiable elections.",
-      techStack: ["Solidity", "Web3.js", "React", "Node.js", "IPFS"],
-      category: "Web Dev",
-      githubUrl: "https://github.com/ravishankar-singh/blockchain-voting",
-      liveUrl: "https://blockchain-voting-demo.vercel.app"
-    },
-    {
-      title: "Natural Language Processor",
-      description: "Advanced NLP model for sentiment analysis and text classification with support for multiple languages and real-time processing capabilities.",
-      techStack: ["PyTorch", "Transformers", "FastAPI", "Docker", "AWS"],
-      category: "Machine Learning",
-      githubUrl: "https://github.com/ravishankar-singh/nlp-processor"
     },
     {
       title: "IoT Environmental Monitor",
@@ -60,38 +89,62 @@ const Index = () => {
     }
   ];
 
-  const categories = ['All', 'Machine Learning', 'Web Dev', 'Hackathons'];
+  const categories = ['All', 'Machine Learning', 'Full Stack', 'Hackathons'];
 
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
-  // Skills data for orbital animation
+  // Enhanced skills data with detailed parameters
   const skillGroups = [
     {
-      category: "ML",
-      skills: ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "OpenCV"],
+      category: "ML/AI",
+      skills: [
+        { name: "Python", proficiency: 95, yearsExp: 4 },
+        { name: "TensorFlow", proficiency: 90, yearsExp: 3 },
+        { name: "PyTorch", proficiency: 88, yearsExp: 3 },
+        { name: "Scikit-learn", proficiency: 92, yearsExp: 4 },
+        { name: "OpenCV", proficiency: 85, yearsExp: 2 }
+      ],
       color: "#3b82f6",
       radius: 120,
       duration: 20
     },
     {
       category: "Frontend",
-      skills: ["React", "TypeScript", "Next.js", "Tailwind", "Three.js"],
+      skills: [
+        { name: "React", proficiency: 93, yearsExp: 3 },
+        { name: "TypeScript", proficiency: 87, yearsExp: 2 },
+        { name: "Next.js", proficiency: 85, yearsExp: 2 },
+        { name: "Tailwind", proficiency: 90, yearsExp: 2 },
+        { name: "Three.js", proficiency: 78, yearsExp: 1 }
+      ],
       color: "#06b6d4", 
       radius: 160,
       duration: 25
     },
     {
       category: "Backend",
-      skills: ["Node.js", "Python", "MongoDB", "PostgreSQL", "Docker"],
+      skills: [
+        { name: "Node.js", proficiency: 91, yearsExp: 3 },
+        { name: "Python", proficiency: 95, yearsExp: 4 },
+        { name: "MongoDB", proficiency: 88, yearsExp: 3 },
+        { name: "PostgreSQL", proficiency: 84, yearsExp: 2 },
+        { name: "Docker", proficiency: 82, yearsExp: 2 }
+      ],
       color: "#a855f7",
       radius: 200,
       duration: 30
     },
     {
       category: "DevOps",
-      skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform"],
+      skills: [
+        { name: "AWS", proficiency: 80, yearsExp: 2 },
+        { name: "Docker", proficiency: 85, yearsExp: 2 },
+        { name: "Kubernetes", proficiency: 75, yearsExp: 1 },
+        { name: "CI/CD", proficiency: 83, yearsExp: 2 },
+        { name: "Terraform", proficiency: 70, yearsExp: 1 }
+      ],
       color: "#ec4899",
       radius: 240,
       duration: 35
@@ -172,8 +225,8 @@ const Index = () => {
               className="px-8 py-4 border-cosmic-blue text-cosmic-blue hover:bg-cosmic-blue/10 font-orbitron font-semibold text-lg"
               asChild
             >
-              <a href="/resume.pdf" download>
-                Download Resume
+              <a href="/about">
+                View Full Profile
               </a>
             </Button>
           </motion.div>
@@ -254,36 +307,7 @@ const Index = () => {
           </motion.div>
 
           <div className="relative flex items-center justify-center min-h-[600px]">
-            {[
-              {
-                category: "ML",
-                skills: ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "OpenCV"],
-                color: "#3b82f6",
-                radius: 120,
-                duration: 20
-              },
-              {
-                category: "Frontend",
-                skills: ["React", "TypeScript", "Next.js", "Tailwind", "Three.js"],
-                color: "#06b6d4", 
-                radius: 160,
-                duration: 25
-              },
-              {
-                category: "Backend",
-                skills: ["Node.js", "Python", "MongoDB", "PostgreSQL", "Docker"],
-                color: "#a855f7",
-                radius: 200,
-                duration: 30
-              },
-              {
-                category: "DevOps",
-                skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform"],
-                color: "#ec4899",
-                radius: 240,
-                duration: 35
-              }
-            ].map((group, index) => (
+            {skillGroups.map((group, index) => (
               <motion.div
                 key={group.category}
                 initial={{ opacity: 0, scale: 0 }}
@@ -317,7 +341,7 @@ const Index = () => {
 
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {['All', 'Machine Learning', 'Web Dev', 'Hackathons'].map((category) => (
+              {categories.map((category) => (
                 <Button
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
@@ -334,53 +358,7 @@ const Index = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "AI-Powered Recommendation Engine",
-                description: "Built a sophisticated machine learning system using collaborative filtering and deep learning to provide personalized recommendations with 94% accuracy.",
-                techStack: ["Python", "TensorFlow", "MongoDB", "Flask", "Docker"],
-                category: "Machine Learning",
-                githubUrl: "https://github.com/ravishankar-singh/ai-recommendations",
-                liveUrl: "https://ai-recommendations-demo.vercel.app"
-              },
-              {
-                title: "Real-time Chat Application",
-                description: "Full-stack chat app with real-time messaging, file sharing, and video calls. Features include end-to-end encryption and multi-platform support.",
-                techStack: ["React", "Node.js", "Socket.io", "MongoDB", "WebRTC"],
-                category: "Web Dev",
-                githubUrl: "https://github.com/ravishankar-singh/realtime-chat",
-                liveUrl: "https://chat-app-demo.vercel.app"
-              },
-              {
-                title: "Smart City Traffic Optimizer",
-                description: "Hackathon-winning project that uses computer vision and ML to optimize traffic light timing, reducing wait times by 35% in simulations.",
-                techStack: ["OpenCV", "Python", "React", "FastAPI", "PostgreSQL"],
-                category: "Hackathons",
-                githubUrl: "https://github.com/ravishankar-singh/traffic-optimizer"
-              },
-              {
-                title: "Blockchain Voting System",
-                description: "Secure and transparent voting platform built on Ethereum blockchain with smart contracts ensuring immutable and verifiable elections.",
-                techStack: ["Solidity", "Web3.js", "React", "Node.js", "IPFS"],
-                category: "Web Dev",
-                githubUrl: "https://github.com/ravishankar-singh/blockchain-voting",
-                liveUrl: "https://blockchain-voting-demo.vercel.app"
-              },
-              {
-                title: "Natural Language Processor",
-                description: "Advanced NLP model for sentiment analysis and text classification with support for multiple languages and real-time processing capabilities.",
-                techStack: ["PyTorch", "Transformers", "FastAPI", "Docker", "AWS"],
-                category: "Machine Learning",
-                githubUrl: "https://github.com/ravishankar-singh/nlp-processor"
-              },
-              {
-                title: "IoT Environmental Monitor",
-                description: "24-hour hackathon project: IoT system monitoring air quality, temperature, and humidity with real-time alerts and data visualization.",
-                techStack: ["Arduino", "React", "Node.js", "InfluxDB", "Grafana"],
-                category: "Hackathons",
-                githubUrl: "https://github.com/ravishankar-singh/iot-monitor"
-              }
-            ].filter(project => selectedCategory === 'All' || project.category === selectedCategory).map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <ProjectCard key={project.title} {...project} index={index} />
             ))}
           </div>
