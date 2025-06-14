@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import StarFieldCanvas from '@/components/StarField';
@@ -10,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isVisible, setIsVisible] = useState({});
+  const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
 
   // Sample projects data
   const projects = [
@@ -255,7 +254,36 @@ const Index = () => {
           </motion.div>
 
           <div className="relative flex items-center justify-center min-h-[600px]">
-            {skillGroups.map((group, index) => (
+            {[
+              {
+                category: "ML",
+                skills: ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "OpenCV"],
+                color: "#3b82f6",
+                radius: 120,
+                duration: 20
+              },
+              {
+                category: "Frontend",
+                skills: ["React", "TypeScript", "Next.js", "Tailwind", "Three.js"],
+                color: "#06b6d4", 
+                radius: 160,
+                duration: 25
+              },
+              {
+                category: "Backend",
+                skills: ["Node.js", "Python", "MongoDB", "PostgreSQL", "Docker"],
+                color: "#a855f7",
+                radius: 200,
+                duration: 30
+              },
+              {
+                category: "DevOps",
+                skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform"],
+                color: "#ec4899",
+                radius: 240,
+                duration: 35
+              }
+            ].map((group, index) => (
               <motion.div
                 key={group.category}
                 initial={{ opacity: 0, scale: 0 }}
@@ -289,7 +317,7 @@ const Index = () => {
 
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
+              {['All', 'Machine Learning', 'Web Dev', 'Hackathons'].map((category) => (
                 <Button
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
@@ -306,7 +334,53 @@ const Index = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {[
+              {
+                title: "AI-Powered Recommendation Engine",
+                description: "Built a sophisticated machine learning system using collaborative filtering and deep learning to provide personalized recommendations with 94% accuracy.",
+                techStack: ["Python", "TensorFlow", "MongoDB", "Flask", "Docker"],
+                category: "Machine Learning",
+                githubUrl: "https://github.com/ravishankar-singh/ai-recommendations",
+                liveUrl: "https://ai-recommendations-demo.vercel.app"
+              },
+              {
+                title: "Real-time Chat Application",
+                description: "Full-stack chat app with real-time messaging, file sharing, and video calls. Features include end-to-end encryption and multi-platform support.",
+                techStack: ["React", "Node.js", "Socket.io", "MongoDB", "WebRTC"],
+                category: "Web Dev",
+                githubUrl: "https://github.com/ravishankar-singh/realtime-chat",
+                liveUrl: "https://chat-app-demo.vercel.app"
+              },
+              {
+                title: "Smart City Traffic Optimizer",
+                description: "Hackathon-winning project that uses computer vision and ML to optimize traffic light timing, reducing wait times by 35% in simulations.",
+                techStack: ["OpenCV", "Python", "React", "FastAPI", "PostgreSQL"],
+                category: "Hackathons",
+                githubUrl: "https://github.com/ravishankar-singh/traffic-optimizer"
+              },
+              {
+                title: "Blockchain Voting System",
+                description: "Secure and transparent voting platform built on Ethereum blockchain with smart contracts ensuring immutable and verifiable elections.",
+                techStack: ["Solidity", "Web3.js", "React", "Node.js", "IPFS"],
+                category: "Web Dev",
+                githubUrl: "https://github.com/ravishankar-singh/blockchain-voting",
+                liveUrl: "https://blockchain-voting-demo.vercel.app"
+              },
+              {
+                title: "Natural Language Processor",
+                description: "Advanced NLP model for sentiment analysis and text classification with support for multiple languages and real-time processing capabilities.",
+                techStack: ["PyTorch", "Transformers", "FastAPI", "Docker", "AWS"],
+                category: "Machine Learning",
+                githubUrl: "https://github.com/ravishankar-singh/nlp-processor"
+              },
+              {
+                title: "IoT Environmental Monitor",
+                description: "24-hour hackathon project: IoT system monitoring air quality, temperature, and humidity with real-time alerts and data visualization.",
+                techStack: ["Arduino", "React", "Node.js", "InfluxDB", "Grafana"],
+                category: "Hackathons",
+                githubUrl: "https://github.com/ravishankar-singh/iot-monitor"
+              }
+            ].filter(project => selectedCategory === 'All' || project.category === selectedCategory).map((project, index) => (
               <ProjectCard key={project.title} {...project} index={index} />
             ))}
           </div>

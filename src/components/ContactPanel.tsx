@@ -1,127 +1,115 @@
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ContactPanel = () => {
-  const socialLinks = [
+  const contactMethods = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "ravishankar.singh@example.com",
+      href: "mailto:ravishankar.singh@example.com",
+      color: "#3b82f6"
+    },
     {
       icon: Github,
-      label: 'GitHub',
-      url: 'https://github.com/ravishankar-singh',
-      color: 'cosmic-blue'
+      label: "GitHub",
+      value: "ravishankar-singh",
+      href: "https://github.com/ravishankar-singh",
+      color: "#06b6d4"
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn', 
-      url: 'https://linkedin.com/in/ravishankar-singh',
-      color: 'cosmic-cyan'
+      label: "LinkedIn",
+      value: "ravishankar-singh",
+      href: "https://linkedin.com/in/ravishankar-singh",
+      color: "#a855f7"
     },
     {
-      icon: Mail,
-      label: 'Email',
-      url: 'mailto:ravishankar.singh@example.com',
-      color: 'cosmic-purple'
+      icon: MapPin,
+      label: "Location",
+      value: "India",
+      href: "#",
+      color: "#ec4899"
     }
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
-      className="relative max-w-4xl mx-auto"
-    >
-      {/* Mission Control Panel */}
-      <div className="glass rounded-2xl p-8 border border-white/10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left side - Control interface */}
+    <div className="max-w-4xl mx-auto">
+      <div className="glass rounded-2xl p-8 backdrop-blur-lg border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Contact Info */}
           <div className="space-y-6">
-            <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-orbitron font-bold gradient-text mb-4">
-                Mission Control
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Ready to collaborate on your next project? Let's connect and explore 
-                the possibilities together. Whether it's machine learning, full-stack 
-                development, or innovative solutions - I'm here to help bring your 
-                ideas to life.
-              </p>
-            </div>
-
-            {/* Status indicators */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Available for Projects</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-cosmic-blue rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Remote Collaboration Ready</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-cosmic-purple rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Open Source Contributor</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side - Communication links */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-orbitron font-semibold text-white mb-4">
-              Communication Channels
-            </h4>
+            <h3 className="text-2xl font-orbitron font-bold gradient-text mb-6">
+              Mission Control
+            </h3>
             
-            <div className="grid gap-4">
-              {socialLinks.map((link, index) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, x: 50 }}
+            {contactMethods.map((method, index) => {
+              const IconComponent = method.icon;
+              return (
+                <motion.a
+                  key={method.label}
+                  href={method.href}
+                  target={method.href.startsWith('http') ? '_blank' : '_self'}
+                  rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
+                  initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="flex items-center space-x-4 p-4 rounded-lg glass border border-white/10 hover:border-cosmic-blue/50 transition-all duration-300 group"
                 >
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full justify-start glass border-white/20 hover:border-cosmic-blue/50 text-white hover:text-cosmic-blue transition-all duration-300 group"
-                    asChild
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${method.color}20`, border: `1px solid ${method.color}` }}
                   >
-                    <a href={link.url} target="_blank" rel="noopener noreferrer">
-                      <link.icon className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
-                      <span className="flex-1 text-left">{link.label}</span>
-                      <div className="w-2 h-2 bg-cosmic-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </a>
-                  </Button>
-                </motion.div>
-              ))}
-            </div>
+                    <IconComponent 
+                      className="w-6 h-6 group-hover:scale-110 transition-transform"
+                      style={{ color: method.color }}
+                    />
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-400">{method.label}</div>
+                    <div className="text-white font-medium">{method.value}</div>
+                  </div>
+                </motion.a>
+              );
+            })}
+          </div>
 
-            {/* Download Resume Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="pt-4"
-            >
-              <Button
-                size="lg"
+          {/* Quick Message */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-orbitron font-bold gradient-text mb-6">
+              Launch a Message
+            </h3>
+            
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-cosmic-blue focus:outline-none"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-cosmic-blue focus:outline-none"
+              />
+              <textarea
+                placeholder="Your Message"
+                rows={4}
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:border-cosmic-blue focus:outline-none resize-none"
+              />
+              
+              <Button 
                 className="w-full bg-gradient-to-r from-cosmic-blue to-cosmic-purple hover:from-cosmic-purple hover:to-cosmic-cyan transition-all duration-300 font-orbitron font-semibold"
-                asChild
+                size="lg"
               >
-                <a href="/resume.pdf" download>
-                  Download Resume
-                </a>
+                Send Message
               </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-8 right-8 w-1 h-1 bg-cosmic-blue rounded-full animate-sparkle"></div>
-        <div className="absolute bottom-4 left-4 w-2 h-2 bg-cosmic-purple rounded-full animate-pulse"></div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
