@@ -1,10 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Mail, Github, Linkedin, MapPin, Calendar, Award, Code, GraduationCap, Briefcase, FileText, Download } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Calendar, Award, Code, GraduationCap, Briefcase, FileText, Download, Users, Trophy, BookOpen, Rocket } from 'lucide-react';
 import StarFieldCanvas from '@/components/StarField';
 
 const About = () => {
@@ -78,6 +77,134 @@ const About = () => {
     }
   ];
 
+  // Internships data
+  const internships = [
+    {
+      role: "Machine Learning Engineer Intern",
+      company: "AI Innovations Inc.",
+      duration: "Jun 2022 - Dec 2022",
+      description: "Developed computer vision models and NLP solutions for production systems.",
+      achievements: [
+        "Built object detection model with 94% accuracy",
+        "Implemented NLP chatbot reducing customer service costs by 30%",
+        "Published research paper on transformer architectures"
+      ],
+      technologies: ["Python", "TensorFlow", "PyTorch", "OpenCV", "NLP"]
+    },
+    {
+      role: "Full Stack Developer Intern",
+      company: "StartupTech Solutions",
+      duration: "Jan 2021 - May 2021",
+      description: "Built responsive web applications and REST APIs for client projects.",
+      achievements: [
+        "Developed 3 full-stack web applications",
+        "Improved application performance by 45%",
+        "Mentored 2 junior interns"
+      ],
+      technologies: ["React", "Node.js", "MongoDB", "Express", "AWS"]
+    }
+  ];
+
+  // Comprehensive Timeline with all activities
+  const comprehensiveTimeline = [
+    {
+      year: "2017",
+      title: "Excellence in Academics",
+      description: "Graduated as Head Boy from Delhi Public School with 95.2%",
+      type: "education",
+      icon: <GraduationCap className="w-4 h-4" />,
+      details: "National Science Olympiad Winner"
+    },
+    {
+      year: "2019",
+      title: "IIT Journey Begins",
+      description: "Started Computer Science at Indian Institute of Technology",
+      type: "education",
+      icon: <BookOpen className="w-4 h-4" />,
+      details: "Secured admission through JEE Advanced"
+    },
+    {
+      year: "2020",
+      title: "First Hackathon Victory",
+      description: "Won Smart India Hackathon with AI-based healthcare solution",
+      type: "achievement",
+      icon: <Trophy className="w-4 h-4" />,
+      details: "Team lead for 6-member group"
+    },
+    {
+      year: "2020",
+      title: "Open Source Journey",
+      description: "Started contributing to open source projects",
+      type: "activity",
+      icon: <Code className="w-4 h-4" />,
+      details: "First contribution to TensorFlow community"
+    },
+    {
+      year: "2021",
+      title: "First Internship",
+      description: "Full Stack Developer Intern at StartupTech Solutions",
+      type: "internship",
+      icon: <Briefcase className="w-4 h-4" />,
+      details: "Built 3 production web applications"
+    },
+    {
+      year: "2021",
+      title: "Research Publication",
+      description: "Published first research paper on deep learning",
+      type: "achievement",
+      icon: <Award className="w-4 h-4" />,
+      details: "Accepted at international AI conference"
+    },
+    {
+      year: "2022",
+      title: "ML Engineer Intern",
+      description: "Machine Learning Engineer Intern at AI Innovations Inc.",
+      type: "internship",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Developed production ML models"
+    },
+    {
+      year: "2022",
+      title: "Tech Speaker",
+      description: "Started speaking at tech conferences and workshops",
+      type: "activity",
+      icon: <Users className="w-4 h-4" />,
+      details: "Spoke at 5+ conferences on AI/ML topics"
+    },
+    {
+      year: "2023",
+      title: "Graduation & Full-time Role",
+      description: "Graduated from IIT and joined TechCorp Solutions as Senior Developer",
+      type: "work",
+      icon: <Briefcase className="w-4 h-4" />,
+      details: "CGPA: 8.7/10, First Class Honors"
+    },
+    {
+      year: "2023",
+      title: "AWS ML Certification",
+      description: "Achieved AWS Machine Learning Specialty certification",
+      type: "certification",
+      icon: <Award className="w-4 h-4" />,
+      details: "Professional level certification"
+    },
+    {
+      year: "2024",
+      title: "15+ Hackathons Won",
+      description: "Reached milestone of winning 15+ national and international hackathons",
+      type: "achievement",
+      icon: <Trophy className="w-4 h-4" />,
+      details: "Including major hackathons like HackIndia, CodeStorm"
+    },
+    {
+      year: "2024",
+      title: "Innovation Award",
+      description: "Received company's highest innovation award",
+      type: "achievement",
+      icon: <Award className="w-4 h-4" />,
+      details: "For AI-driven product development"
+    }
+  ];
+
   // Technical Skills data
   const technicalSkills = {
     "Programming Languages": [
@@ -135,18 +262,6 @@ const About = () => {
       issuer: "Meta",
       year: "2022",
       credentialId: "META-REACT-2022-004"
-    },
-    {
-      name: "Kubernetes Application Developer",
-      issuer: "CNCF",
-      year: "2023",
-      credentialId: "CNCF-K8S-2023-005"
-    },
-    {
-      name: "Python for Data Science",
-      issuer: "IBM",
-      year: "2021",
-      credentialId: "IBM-PY-2021-006"
     }
   ];
 
@@ -171,136 +286,22 @@ const About = () => {
       title: "Tech Speaker",
       description: "Speaker at 10+ tech conferences and workshops on AI/ML topics",
       year: "2022-2024"
-    },
-    {
-      title: "Innovation Award",
-      description: "Received company's highest innovation award for AI-driven product development",
-      year: "2023"
-    },
-    {
-      title: "Mentorship Program",
-      description: "Successfully mentored 25+ students in their tech careers",
-      year: "2021-2024"
     }
   ];
 
-  // Timeline data
-  const timeline = [
-    {
-      year: "2019",
-      title: "Started Computer Science Journey",
-      description: "Began Bachelor's in Computer Science at IIT",
-      type: "education",
-      icon: <GraduationCap className="w-4 h-4" />
-    },
-    {
-      year: "2020",
-      title: "First Hackathon Win",
-      description: "Won Smart India Hackathon with AI-based solution",
-      type: "achievement",
-      icon: <Award className="w-4 h-4" />
-    },
-    {
-      year: "2021",
-      title: "Started Learning ML",
-      description: "Dove deep into Machine Learning and AI",
-      type: "education",
-      icon: <Code className="w-4 h-4" />
-    },
-    {
-      year: "2022",
-      title: "First Internship",
-      description: "ML Engineer Intern at AI Innovations Inc.",
-      type: "work",
-      icon: <Briefcase className="w-4 h-4" />
-    },
-    {
-      year: "2023",
-      title: "Graduated & Full-time Role",
-      description: "Graduated from IIT and joined TechCorp Solutions",
-      type: "work",
-      icon: <Briefcase className="w-4 h-4" />
-    },
-    {
-      year: "2024",
-      title: "15+ Hackathons Won",
-      description: "Achieved milestone of winning 15+ hackathons",
-      type: "achievement",
-      icon: <Award className="w-4 h-4" />
-    }
-  ];
-
-  // Internships data
-  const internships = [
-    {
-      role: "Machine Learning Engineer Intern",
-      company: "AI Innovations Inc.",
-      duration: "Jun 2022 - Dec 2022",
-      description: "Developed computer vision models and NLP solutions for production systems.",
-      achievements: [
-        "Built object detection model with 94% accuracy",
-        "Implemented NLP chatbot reducing customer service costs by 30%",
-        "Published research paper on transformer architectures"
-      ],
-      technologies: ["Python", "TensorFlow", "PyTorch", "OpenCV", "NLP"]
-    },
-    {
-      role: "Full Stack Developer Intern",
-      company: "StartupTech Solutions",
-      duration: "Jan 2021 - May 2021",
-      description: "Built responsive web applications and REST APIs for client projects.",
-      achievements: [
-        "Developed 3 full-stack web applications",
-        "Improved application performance by 45%",
-        "Mentored 2 junior interns"
-      ],
-      technologies: ["React", "Node.js", "MongoDB", "Express", "AWS"]
-    }
-  ];
-
-  // Early achievements
-  const earlyAchievements = [
-    {
-      title: "Programming Contest Winner",
-      description: "Won state-level programming contest in 12th grade",
-      year: "2019"
-    },
-    {
-      title: "Science Fair Champion",
-      description: "First place in national science fair for AI project",
-      year: "2018"
-    },
-    {
-      title: "Coding Bootcamp Graduate",
-      description: "Completed advanced coding bootcamp with distinction",
-      year: "2020"
-    }
-  ];
-
-  // Resume content (mock data)
+  // Resume content
   const resumeContent = {
-    personalInfo: personalInfo,
-    experience: [
-      {
-        role: "Senior Full Stack Developer",
-        company: "TechCorp Solutions",
-        duration: "2023 - Present",
-        responsibilities: [
-          "Lead development of ML-powered web applications",
-          "Manage team of 5 developers",
-          "Implement CI/CD pipelines and microservices architecture"
-        ]
-      }
-    ],
-    education: [
-      {
-        degree: "B.Tech Computer Science",
-        institution: "Indian Institute of Technology",
-        year: "2019-2023",
-        grade: "CGPA: 8.7/10"
-      }
-    ],
-    skills: ["Python", "JavaScript", "React", "TensorFlow", "AWS", "Docker"]
+    summary: "Passionate Machine Learning Engineer and Full Stack Developer with 3+ years of experience building scalable AI solutions. Proven track record of 15+ hackathon victories and expertise in modern web technologies.",
+    experience: experience,
+    education: education,
+    skills: ["Python", "JavaScript", "React", "TensorFlow", "AWS", "Docker", "Machine Learning", "Deep Learning"],
+    certifications: certifications.slice(0, 3),
+    achievements: [
+      "Winner of 15+ hackathons including Smart India Hackathon",
+      "Published 5 research papers in AI/ML conferences",
+      "Led development of ML models improving user engagement by 40%",
+      "Mentored 25+ students in their tech careers"
+    ]
   };
 
   // Scroll reveal effect
@@ -321,6 +322,18 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const getTimelineColor = (type: string) => {
+    switch (type) {
+      case 'education': return 'bg-cosmic-blue';
+      case 'internship': return 'bg-cosmic-purple';
+      case 'work': return 'bg-cosmic-cyan';
+      case 'achievement': return 'bg-yellow-500';
+      case 'certification': return 'bg-green-500';
+      case 'activity': return 'bg-pink-500';
+      default: return 'bg-cosmic-blue';
+    }
+  };
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden">
@@ -394,29 +407,36 @@ const About = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     <div className="flex justify-between items-center mb-6">
-                      <h3 className="text-2xl font-orbitron text-white">Resume</h3>
+                      <h3 className="text-2xl font-orbitron text-white">Professional Resume</h3>
                       <Button variant="outline" className="border-cosmic-blue text-cosmic-blue">
                         <Download className="w-4 h-4 mr-2" />
                         Download PDF
                       </Button>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Resume Summary */}
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Professional Summary</h4>
+                      <p className="text-gray-300 leading-relaxed">{resumeContent.summary}</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                       {/* Experience */}
                       <div>
-                        <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Experience</h4>
+                        <h4 className="text-lg font-semibold text-cosmic-cyan mb-4">Professional Experience</h4>
                         {resumeContent.experience.map((exp, index) => (
-                          <div key={index} className="mb-4 p-4 bg-white/5 rounded-lg">
-                            <h5 className="font-semibold text-white">{exp.role}</h5>
-                            <p className="text-cosmic-blue">{exp.company}</p>
-                            <p className="text-gray-400 text-sm">{exp.duration}</p>
-                            <ul className="text-gray-300 text-sm mt-2 space-y-1">
-                              {exp.responsibilities.map((resp, i) => (
+                          <div key={index} className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
+                            <h5 className="font-semibold text-white text-lg">{exp.role}</h5>
+                            <p className="text-cosmic-blue font-medium">{exp.company}</p>
+                            <p className="text-gray-400 text-sm mb-2">{exp.duration}</p>
+                            <p className="text-gray-300 text-sm mb-3">{exp.description}</p>
+                            <ul className="text-gray-300 text-sm space-y-1">
+                              {exp.achievements.slice(0, 3).map((achievement, i) => (
                                 <li key={i} className="flex items-start space-x-2">
                                   <span className="text-cosmic-blue">•</span>
-                                  <span>{resp}</span>
+                                  <span>{achievement}</span>
                                 </li>
                               ))}
                             </ul>
@@ -424,25 +444,44 @@ const About = () => {
                         ))}
                       </div>
                       
-                      {/* Education & Skills */}
-                      <div>
-                        <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Education</h4>
-                        {resumeContent.education.map((edu, index) => (
-                          <div key={index} className="mb-4 p-4 bg-white/5 rounded-lg">
-                            <h5 className="font-semibold text-white">{edu.degree}</h5>
-                            <p className="text-cosmic-blue">{edu.institution}</p>
-                            <p className="text-gray-400 text-sm">{edu.year}</p>
-                            <p className="text-gray-300 text-sm">{edu.grade}</p>
-                          </div>
-                        ))}
-                        
-                        <h4 className="text-lg font-semibold text-cosmic-cyan mb-3 mt-6">Key Skills</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {resumeContent.skills.map((skill, index) => (
-                            <Badge key={index} variant="outline" className="border-cosmic-blue text-cosmic-blue">
-                              {skill}
-                            </Badge>
+                      {/* Education & Other Sections */}
+                      <div className="space-y-6">
+                        {/* Education */}
+                        <div>
+                          <h4 className="text-lg font-semibold text-cosmic-cyan mb-4">Education</h4>
+                          {resumeContent.education.map((edu, index) => (
+                            <div key={index} className="mb-4 p-4 bg-white/5 rounded-lg border border-white/10">
+                              <h5 className="font-semibold text-white">{edu.degree}</h5>
+                              <p className="text-cosmic-blue">{edu.institution}</p>
+                              <p className="text-gray-400 text-sm">{edu.year}</p>
+                              <p className="text-gray-300 text-sm">{edu.grade}</p>
+                            </div>
                           ))}
+                        </div>
+                        
+                        {/* Skills */}
+                        <div>
+                          <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Core Skills</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {resumeContent.skills.map((skill, index) => (
+                              <Badge key={index} variant="outline" className="border-cosmic-blue text-cosmic-blue">
+                                {skill}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        {/* Key Achievements */}
+                        <div>
+                          <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Key Achievements</h4>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            {resumeContent.achievements.map((achievement, index) => (
+                              <li key={index} className="flex items-start space-x-2">
+                                <span className="text-cosmic-blue">✓</span>
+                                <span>{achievement}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -454,43 +493,78 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section id="timeline" className="py-16 px-4 scroll-reveal">
+      {/* Comprehensive Timeline */}
+      <section id="comprehensive-timeline" className="py-16 px-4 scroll-reveal">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.timeline ? { opacity: 1, y: 0 } : {}}
+            animate={isVisible['comprehensive-timeline'] ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Journey Timeline</h2>
+            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Complete Journey Timeline</h2>
+            
+            {/* Timeline Legend */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-cosmic-blue rounded-full"></div>
+                <span className="text-sm text-gray-300">Education</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-cosmic-purple rounded-full"></div>
+                <span className="text-sm text-gray-300">Internships</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-cosmic-cyan rounded-full"></div>
+                <span className="text-sm text-gray-300">Professional</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <span className="text-sm text-gray-300">Achievements</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span className="text-sm text-gray-300">Certifications</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
+                <span className="text-sm text-gray-300">Activities</span>
+              </div>
+            </div>
+            
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-cosmic-blue"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cosmic-blue via-cosmic-purple to-cosmic-cyan opacity-50"></div>
               
               <div className="space-y-8">
-                {timeline.map((item, index) => (
+                {comprehensiveTimeline.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -50 }}
-                    animate={isVisible.timeline ? { opacity: 1, x: 0 } : {}}
+                    animate={isVisible['comprehensive-timeline'] ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="relative flex items-start space-x-6"
                   >
                     {/* Timeline dot */}
-                    <div className="flex-shrink-0 w-16 h-16 bg-cosmic-blue rounded-full flex items-center justify-center relative z-10">
+                    <div className={`flex-shrink-0 w-16 h-16 ${getTimelineColor(item.type)} rounded-full flex items-center justify-center relative z-10 shadow-lg`}>
                       {item.icon}
                     </div>
                     
-                    <Card className="glass border-white/10 flex-1">
+                    <Card className="glass border-white/10 flex-1 hover:border-cosmic-blue/30 transition-all duration-300">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <div>
                             <CardTitle className="text-lg text-white">{item.title}</CardTitle>
                             <CardDescription className="text-cosmic-cyan">{item.description}</CardDescription>
+                            {item.details && (
+                              <p className="text-gray-400 text-sm mt-1">{item.details}</p>
+                            )}
                           </div>
-                          <Badge variant="outline" className="border-cosmic-purple text-cosmic-purple">
-                            {item.year}
-                          </Badge>
+                          <div className="text-right">
+                            <Badge variant="outline" className="border-cosmic-purple text-cosmic-purple">
+                              {item.year}
+                            </Badge>
+                            <div className="text-xs text-gray-400 mt-1 capitalize">{item.type}</div>
+                          </div>
                         </div>
                       </CardHeader>
                     </Card>
@@ -513,10 +587,10 @@ const About = () => {
             <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Internship Experience</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {internships.map((internship, index) => (
-                <Card key={index} className="glass border-white/10">
+                <Card key={index} className="glass border-white/10 hover:border-cosmic-purple/30 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-xl text-white flex items-center space-x-3">
-                      <Briefcase className="w-6 h-6 text-cosmic-blue" />
+                      <Briefcase className="w-6 h-6 text-cosmic-purple" />
                       <span>{internship.role}</span>
                     </CardTitle>
                     <CardDescription className="text-cosmic-cyan">{internship.company} • {internship.duration}</CardDescription>
@@ -529,7 +603,7 @@ const About = () => {
                       <ul className="text-gray-300 space-y-1">
                         {internship.achievements.map((achievement, i) => (
                           <li key={i} className="flex items-start space-x-2">
-                            <span className="text-cosmic-blue">✓</span>
+                            <span className="text-cosmic-purple">✓</span>
                             <span className="text-sm">{achievement}</span>
                           </li>
                         ))}
@@ -537,7 +611,7 @@ const About = () => {
                     </div>
                     
                     <div>
-                      <h4 className="text-white font-semibold mb-2">Technologies:</h4>
+                      <h4 className="text-white font-semibold mb-2">Technologies Used:</h4>
                       <div className="flex flex-wrap gap-2">
                         {internship.technologies.map((tech, i) => (
                           <Badge key={i} variant="outline" className="border-cosmic-purple text-cosmic-purple text-xs">
@@ -546,37 +620,6 @@ const About = () => {
                         ))}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Early Achievements */}
-      <section id="early-achievements" className="py-16 px-4 scroll-reveal">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible['early-achievements'] ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Early Achievements</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {earlyAchievements.map((achievement, index) => (
-                <Card key={index} className="glass border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-lg text-white flex items-center space-x-3">
-                      <Award className="w-5 h-5 text-cosmic-blue" />
-                      <span>{achievement.title}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-300 mb-2">{achievement.description}</p>
-                    <Badge variant="outline" className="border-cosmic-cyan text-cosmic-cyan">
-                      {achievement.year}
-                    </Badge>
                   </CardContent>
                 </Card>
               ))}
