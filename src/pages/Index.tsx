@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -199,7 +198,7 @@ const Index = () => {
         </div>
       </nav>
       
-      {/* Hero Section */}
+      {/* Hero Section with Updated Colors */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <div className="absolute right-10 top-20 w-96 h-96 opacity-30">
           <Planet3D />
@@ -217,18 +216,20 @@ const Index = () => {
             animate={{ scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="gradient-text">RAVISHANKAR</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">RAVISHANKAR</span>
             <br />
-            <span className="text-white">SINGH</span>
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">SINGH</span>
           </motion.h1>
           
           <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-8 font-light"
+            className="text-xl md:text-2xl mb-8 font-light"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Machine Learning Enthusiast & Full Stack Developer
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-semibold">Machine Learning Enthusiast</span>
+            <span className="text-gray-300"> & </span>
+            <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent font-semibold">Full Stack Developer</span>
           </motion.p>
           
           <motion.div
