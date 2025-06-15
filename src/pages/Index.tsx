@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -40,13 +41,28 @@ const Index = () => {
             transition={{ duration: 1 }}
             className="mb-8"
           >
+            {/* Profile Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" 
+                alt="Ravishankar Singh"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto object-cover border-4 border-cosmic-blue shadow-2xl"
+              />
+            </motion.div>
+
             <h1 className="text-6xl md:text-8xl font-orbitron font-bold mb-6">
               <span className="text-cosmic-cyan">Ravishankar</span>{' '}
               <span className="gradient-text">Singh</span>
             </h1>
             <p className="text-2xl md:text-3xl mb-4">
               <span className="text-cosmic-blue">Machine Learning</span>{' '}
-              <span className="text-white">Enthusiast</span>
+              <span className="text-white">and Development</span>{' '}
+              <span className="text-cosmic-purple">Enthusiast</span>
             </p>
             <p className="text-xl text-cosmic-purple mb-8 max-w-3xl mx-auto leading-relaxed">
               Passionate developer crafting intelligent solutions with cutting-edge AI technology and modern web development

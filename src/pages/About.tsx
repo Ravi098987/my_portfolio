@@ -3,17 +3,19 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Mail, Github, Linkedin, MapPin, Calendar, Award, Code, GraduationCap, Briefcase, FileText, Download, Users, Trophy, BookOpen, Rocket } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Calendar, Award, Code, GraduationCap, Briefcase, FileText, Download, Users, Trophy, BookOpen, Rocket, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import StarFieldCanvas from '@/components/StarField';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
   const [showResume, setShowResume] = useState(false);
+  const [activeTimelineFilter, setActiveTimelineFilter] = useState('all');
 
   // Personal Information
   const personalInfo = {
     name: "Ravishankar Singh",
-    title: "Machine Learning Enthusiast & Full Stack Developer",
+    title: "Machine Learning and Development Enthusiast",
     location: "India",
     email: "ravishankar.singh@example.com",
     phone: "+91-9876543210",
@@ -105,7 +107,7 @@ const About = () => {
     }
   ];
 
-  // Comprehensive Timeline with all activities
+  // Enhanced Comprehensive Timeline with projects
   const comprehensiveTimeline = [
     {
       year: "2017",
@@ -133,11 +135,27 @@ const About = () => {
     },
     {
       year: "2020",
+      title: "E-Learning Platform Project",
+      description: "Built comprehensive online learning platform with React and Node.js",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "Served 500+ students with video streaming and assessments"
+    },
+    {
+      year: "2020",
       title: "Open Source Journey",
       description: "Started contributing to open source projects",
       type: "activity",
       icon: <Code className="w-4 h-4" />,
       details: "First contribution to TensorFlow community"
+    },
+    {
+      year: "2021",
+      title: "Healthcare AI Project",
+      description: "Developed ML model for early disease detection using medical imaging",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Achieved 92% accuracy in diagnostic predictions"
     },
     {
       year: "2021",
@@ -157,6 +175,14 @@ const About = () => {
     },
     {
       year: "2022",
+      title: "Smart City IoT Project",
+      description: "Led development of IoT-based traffic management system",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Reduced traffic congestion by 25% in pilot area"
+    },
+    {
+      year: "2022",
       title: "ML Engineer Intern",
       description: "Machine Learning Engineer Intern at AI Innovations Inc.",
       type: "internship",
@@ -170,6 +196,14 @@ const About = () => {
       type: "activity",
       icon: <Users className="w-4 h-4" />,
       details: "Spoke at 5+ conferences on AI/ML topics"
+    },
+    {
+      year: "2022",
+      title: "Financial Analytics Platform",
+      description: "Built real-time stock market analysis platform using ML",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "Processed 1M+ data points with 95% prediction accuracy"
     },
     {
       year: "2023",
@@ -186,6 +220,22 @@ const About = () => {
       type: "certification",
       icon: <Award className="w-4 h-4" />,
       details: "Professional level certification"
+    },
+    {
+      year: "2023",
+      title: "AI Chat Assistant Project",
+      description: "Developed enterprise-grade AI chatbot for customer service",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Handles 10k+ queries daily with 94% satisfaction rate"
+    },
+    {
+      year: "2024",
+      title: "Computer Vision Project",
+      description: "Built automated quality control system for manufacturing",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "Reduced defect detection time by 80%"
     },
     {
       year: "2024",
@@ -331,8 +381,14 @@ const About = () => {
       case 'achievement': return 'bg-yellow-500';
       case 'certification': return 'bg-green-500';
       case 'activity': return 'bg-pink-500';
+      case 'project': return 'bg-orange-500';
       default: return 'bg-cosmic-blue';
     }
+  };
+
+  const getFilteredTimeline = () => {
+    if (activeTimelineFilter === 'all') return comprehensiveTimeline;
+    return comprehensiveTimeline.filter(item => item.type === activeTimelineFilter);
   };
 
   return (
@@ -342,6 +398,20 @@ const About = () => {
       {/* Header */}
       <section className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">
+          <div className="flex items-center mb-8">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              asChild
+              className="text-cosmic-cyan hover:text-white"
+            >
+              <Link to="/" className="flex items-center space-x-2">
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to Home</span>
+              </Link>
+            </Button>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -416,14 +486,12 @@ const About = () => {
                       </Button>
                     </div>
                     
-                    {/* Resume Summary */}
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Professional Summary</h4>
                       <p className="text-gray-300 leading-relaxed">{resumeContent.summary}</p>
                     </div>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                      {/* Experience */}
                       <div>
                         <h4 className="text-lg font-semibold text-cosmic-cyan mb-4">Professional Experience</h4>
                         {resumeContent.experience.map((exp, index) => (
@@ -444,9 +512,7 @@ const About = () => {
                         ))}
                       </div>
                       
-                      {/* Education & Other Sections */}
                       <div className="space-y-6">
-                        {/* Education */}
                         <div>
                           <h4 className="text-lg font-semibold text-cosmic-cyan mb-4">Education</h4>
                           {resumeContent.education.map((edu, index) => (
@@ -459,7 +525,6 @@ const About = () => {
                           ))}
                         </div>
                         
-                        {/* Skills */}
                         <div>
                           <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Core Skills</h4>
                           <div className="flex flex-wrap gap-2">
@@ -471,7 +536,6 @@ const About = () => {
                           </div>
                         </div>
                         
-                        {/* Key Achievements */}
                         <div>
                           <h4 className="text-lg font-semibold text-cosmic-cyan mb-3">Key Achievements</h4>
                           <ul className="text-gray-300 text-sm space-y-2">
@@ -493,7 +557,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Comprehensive Timeline */}
+      {/* Enhanced Timeline Section */}
       <section id="comprehensive-timeline" className="py-16 px-4 scroll-reveal">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -501,50 +565,50 @@ const About = () => {
             animate={isVisible['comprehensive-timeline'] ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Complete Journey Timeline</h2>
+            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-8 text-center">Complete Journey Timeline</h2>
+            <p className="text-center text-gray-300 mb-12 text-lg">
+              Explore my educational background, internships, achievements, and project milestones
+            </p>
             
-            {/* Timeline Legend */}
+            {/* Timeline Filters */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-cosmic-blue rounded-full"></div>
-                <span className="text-sm text-gray-300">Education</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-cosmic-purple rounded-full"></div>
-                <span className="text-sm text-gray-300">Internships</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-cosmic-cyan rounded-full"></div>
-                <span className="text-sm text-gray-300">Professional</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm text-gray-300">Achievements</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-gray-300">Certifications</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
-                <span className="text-sm text-gray-300">Activities</span>
-              </div>
+              {[
+                { key: 'all', label: 'All', color: 'bg-white' },
+                { key: 'education', label: 'Education', color: 'bg-cosmic-blue' },
+                { key: 'internship', label: 'Internships', color: 'bg-cosmic-purple' },
+                { key: 'work', label: 'Professional', color: 'bg-cosmic-cyan' },
+                { key: 'project', label: 'Projects', color: 'bg-orange-500' },
+                { key: 'achievement', label: 'Achievements', color: 'bg-yellow-500' },
+                { key: 'certification', label: 'Certifications', color: 'bg-green-500' },
+                { key: 'activity', label: 'Activities', color: 'bg-pink-500' }
+              ].map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => setActiveTimelineFilter(filter.key)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-full border transition-all duration-300 ${
+                    activeTimelineFilter === filter.key
+                      ? 'bg-white/20 border-white text-white'
+                      : 'border-white/20 text-gray-300 hover:border-white/40'
+                  }`}
+                >
+                  <div className={`w-3 h-3 ${filter.color} rounded-full`}></div>
+                  <span className="text-sm">{filter.label}</span>
+                </button>
+              ))}
             </div>
             
             <div className="relative">
-              {/* Timeline line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cosmic-blue via-cosmic-purple to-cosmic-cyan opacity-50"></div>
               
               <div className="space-y-8">
-                {comprehensiveTimeline.map((item, index) => (
+                {getFilteredTimeline().map((item, index) => (
                   <motion.div
-                    key={index}
+                    key={`${item.year}-${item.title}`}
                     initial={{ opacity: 0, x: -50 }}
                     animate={isVisible['comprehensive-timeline'] ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="relative flex items-start space-x-6"
                   >
-                    {/* Timeline dot */}
                     <div className={`flex-shrink-0 w-16 h-16 ${getTimelineColor(item.type)} rounded-full flex items-center justify-center relative z-10 shadow-lg`}>
                       {item.icon}
                     </div>
@@ -840,7 +904,7 @@ const About = () => {
                 className="bg-gradient-to-r from-cosmic-blue to-cosmic-purple hover:from-cosmic-purple hover:to-cosmic-cyan"
                 asChild
               >
-                <a href="/#contact">Get In Touch</a>
+                <Link to="/contact">Get In Touch</Link>
               </Button>
               <Button 
                 variant="outline" 

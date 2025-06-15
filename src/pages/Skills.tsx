@@ -1,121 +1,241 @@
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import SkillOrbit from '@/components/SkillOrbit';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Code, Brain, Globe, Cloud, Database, Smartphone, ArrowLeft } from 'lucide-react';
+import StarFieldCanvas from '@/components/StarField';
 
 const Skills = () => {
-  const skillGroups = [
+  const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
+
+  const skillCategories = [
     {
-      category: "ML/AI",
+      title: "Machine Learning & AI",
+      icon: <Brain className="w-6 h-6" />,
+      color: "from-blue-500 to-purple-600",
       skills: [
-        { name: "Python", proficiency: 95, yearsExp: 4 },
-        { name: "TensorFlow", proficiency: 90, yearsExp: 3 },
-        { name: "PyTorch", proficiency: 88, yearsExp: 3 },
-        { name: "Scikit-learn", proficiency: 92, yearsExp: 4 },
-        { name: "OpenCV", proficiency: 85, yearsExp: 2 }
-      ],
-      color: "#3b82f6",
-      radius: 120,
-      duration: 20
+        { name: "Python", level: 95, description: "Primary language for ML/AI development" },
+        { name: "TensorFlow", level: 90, description: "Deep learning framework expertise" },
+        { name: "PyTorch", level: 88, description: "Neural network development" },
+        { name: "Scikit-learn", level: 92, description: "Machine learning algorithms" },
+        { name: "OpenCV", level: 85, description: "Computer vision applications" },
+        { name: "NLP", level: 82, description: "Natural language processing" }
+      ]
     },
     {
-      category: "Frontend",
+      title: "Frontend Development",
+      icon: <Globe className="w-6 h-6" />,
+      color: "from-cyan-500 to-blue-600",
       skills: [
-        { name: "React", proficiency: 93, yearsExp: 3 },
-        { name: "TypeScript", proficiency: 87, yearsExp: 2 },
-        { name: "Next.js", proficiency: 85, yearsExp: 2 },
-        { name: "Tailwind", proficiency: 90, yearsExp: 2 },
-        { name: "Three.js", proficiency: 78, yearsExp: 1 }
-      ],
-      color: "#06b6d4", 
-      radius: 160,
-      duration: 25
+        { name: "React", level: 93, description: "Component-based UI development" },
+        { name: "TypeScript", level: 87, description: "Type-safe JavaScript development" },
+        { name: "Next.js", level: 85, description: "Full-stack React framework" },
+        { name: "Tailwind CSS", level: 90, description: "Utility-first CSS framework" },
+        { name: "HTML/CSS", level: 95, description: "Web fundamentals" },
+        { name: "JavaScript", level: 90, description: "Core web programming" }
+      ]
     },
     {
-      category: "Backend",
+      title: "Backend Development",
+      icon: <Database className="w-6 h-6" />,
+      color: "from-purple-500 to-pink-600",
       skills: [
-        { name: "Node.js", proficiency: 91, yearsExp: 3 },
-        { name: "Python", proficiency: 95, yearsExp: 4 },
-        { name: "MongoDB", proficiency: 88, yearsExp: 3 },
-        { name: "PostgreSQL", proficiency: 84, yearsExp: 2 },
-        { name: "Docker", proficiency: 82, yearsExp: 2 }
-      ],
-      color: "#a855f7",
-      radius: 200,
-      duration: 30
+        { name: "Node.js", level: 91, description: "Server-side JavaScript runtime" },
+        { name: "Express.js", level: 88, description: "Web application framework" },
+        { name: "MongoDB", level: 88, description: "NoSQL database management" },
+        { name: "PostgreSQL", level: 84, description: "Relational database systems" },
+        { name: "REST APIs", level: 90, description: "API design and development" },
+        { name: "GraphQL", level: 78, description: "Query language for APIs" }
+      ]
     },
     {
-      category: "DevOps",
+      title: "Cloud & DevOps",
+      icon: <Cloud className="w-6 h-6" />,
+      color: "from-green-500 to-teal-600",
       skills: [
-        { name: "AWS", proficiency: 80, yearsExp: 2 },
-        { name: "Docker", proficiency: 85, yearsExp: 2 },
-        { name: "Kubernetes", proficiency: 75, yearsExp: 1 },
-        { name: "CI/CD", proficiency: 83, yearsExp: 2 },
-        { name: "Terraform", proficiency: 70, yearsExp: 1 }
-      ],
-      color: "#ec4899",
-      radius: 240,
-      duration: 35
+        { name: "AWS", level: 85, description: "Cloud infrastructure and services" },
+        { name: "Docker", level: 82, description: "Containerization technology" },
+        { name: "Kubernetes", level: 75, description: "Container orchestration" },
+        { name: "CI/CD", level: 83, description: "Continuous integration/deployment" },
+        { name: "Git", level: 95, description: "Version control systems" },
+        { name: "Terraform", level: 70, description: "Infrastructure as code" }
+      ]
+    },
+    {
+      title: "Programming Languages",
+      icon: <Code className="w-6 h-6" />,
+      color: "from-orange-500 to-red-600",
+      skills: [
+        { name: "Python", level: 95, description: "Primary programming language" },
+        { name: "JavaScript", level: 90, description: "Web development language" },
+        { name: "TypeScript", level: 87, description: "Typed JavaScript superset" },
+        { name: "Java", level: 80, description: "Enterprise development" },
+        { name: "C++", level: 75, description: "System programming" },
+        { name: "SQL", level: 88, description: "Database query language" }
+      ]
+    },
+    {
+      title: "Tools & Technologies",
+      icon: <Smartphone className="w-6 h-6" />,
+      color: "from-indigo-500 to-purple-600",
+      skills: [
+        { name: "VS Code", level: 95, description: "Primary development environment" },
+        { name: "Jupyter", level: 90, description: "Data science and ML notebooks" },
+        { name: "Postman", level: 88, description: "API testing and development" },
+        { name: "Figma", level: 75, description: "UI/UX design tool" },
+        { name: "Firebase", level: 80, description: "Backend as a service" },
+        { name: "Vercel", level: 85, description: "Deployment platform" }
+      ]
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
-      {/* Navigation */}
-      <nav className="p-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link to="/" className="text-2xl font-orbitron font-bold gradient-text">
-            RS
-          </Link>
-          <div className="flex gap-6">
-            <Link to="/about" className="text-white hover:text-cosmic-blue transition-colors">
-              About
-            </Link>
-            <Link to="/projects" className="text-white hover:text-cosmic-blue transition-colors">
-              Projects
-            </Link>
-            <Link to="/skills" className="text-cosmic-blue">
-              Skills
-            </Link>
-            <Link to="/contact" className="text-white hover:text-cosmic-blue transition-colors">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </nav>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(prev => ({ ...prev, [entry.target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-      <div className="py-20 px-4">
+    const elements = document.querySelectorAll('.skill-card');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="min-h-screen text-white overflow-x-hidden">
+      <StarFieldCanvas />
+      
+      {/* Header */}
+      <section className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">
+          <div className="flex items-center mb-8">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              asChild
+              className="text-cosmic-cyan hover:text-white"
+            >
+              <Link to="/" className="flex items-center space-x-2">
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to Home</span>
+              </Link>
+            </Button>
+          </div>
+          
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-6xl font-orbitron font-bold gradient-text mb-8">
-              Tech Universe
+            <h1 className="text-5xl md:text-7xl font-orbitron font-bold gradient-text mb-8">
+              Technical Skills
             </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Explore the orbital systems of my technical expertise, where each skill 
-              revolves around innovation and excellence.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              A comprehensive overview of my technical expertise across different domains of software development and machine learning.
             </p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="relative flex items-center justify-center min-h-[600px]">
-            {skillGroups.map((group, index) => (
+      {/* Skills Grid */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {skillCategories.map((category, categoryIndex) => (
               <motion.div
-                key={group.category}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: index * 0.2 }}
-                className="absolute"
+                key={category.title}
+                id={`category-${categoryIndex}`}
+                className="skill-card"
+                initial={{ opacity: 0, y: 50 }}
+                animate={isVisible[`category-${categoryIndex}`] ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
               >
-                <SkillOrbit {...group} />
+                <Card className="glass border-white/10 h-full">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-white flex items-center space-x-3">
+                      <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color}`}>
+                        {category.icon}
+                      </div>
+                      <span>{category.title}</span>
+                    </CardTitle>
+                    <CardDescription className="text-gray-300">
+                      Proficiency levels and experience in {category.title.toLowerCase()}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-6">
+                      {category.skills.map((skill, skillIndex) => (
+                        <div key={skill.name} className="space-y-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-white font-medium">{skill.name}</span>
+                            <Badge 
+                              variant="outline" 
+                              className="border-cosmic-blue text-cosmic-blue"
+                            >
+                              {skill.level}%
+                            </Badge>
+                          </div>
+                          <p className="text-gray-400 text-sm">{skill.description}</p>
+                          <Progress 
+                            value={isVisible[`category-${categoryIndex}`] ? skill.level : 0}
+                            className="h-2"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl font-orbitron font-bold gradient-text mb-6">
+              Ready to Collaborate?
+            </h2>
+            <p className="text-gray-300 mb-8 text-lg">
+              Let's work together to bring your ideas to life with cutting-edge technology.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-cosmic-blue to-cosmic-purple hover:from-cosmic-purple hover:to-cosmic-cyan"
+                asChild
+              >
+                <Link to="/contact">Get In Touch</Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-cosmic-blue text-cosmic-blue hover:bg-cosmic-blue/10"
+                asChild
+              >
+                <Link to="/projects">View Projects</Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };
