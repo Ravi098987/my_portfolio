@@ -23,6 +23,210 @@ const About = () => {
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
   };
 
+  // Updated Engineering Journey Timeline (2022-2026)
+  const engineeringTimeline = [
+    {
+      year: "2022",
+      month: "January",
+      title: "Smart Healthcare AI Project",
+      description: "Developed ML model for early disease detection using medical imaging during 3rd year",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Achieved 92% accuracy in diagnostic predictions, used TensorFlow and OpenCV",
+      technologies: ["Python", "TensorFlow", "OpenCV", "Medical Imaging"]
+    },
+    {
+      year: "2022",
+      month: "March",
+      title: "Smart India Hackathon Winner",
+      description: "Led team to victory with AI-based traffic management system",
+      type: "achievement",
+      icon: <Trophy className="w-4 h-4" />,
+      details: "Reduced traffic congestion by 25% in pilot area, team of 6 members",
+      technologies: ["IoT", "Python", "Machine Learning", "Real-time Analytics"]
+    },
+    {
+      year: "2022",
+      month: "June",
+      title: "ML Engineer Intern - AI Innovations Inc.",
+      description: "Started first major internship in machine learning",
+      type: "internship",
+      icon: <Briefcase className="w-4 h-4" />,
+      details: "Focused on computer vision and NLP solutions",
+      technologies: ["Python", "TensorFlow", "PyTorch", "OpenCV", "NLP"]
+    },
+    {
+      year: "2022",
+      month: "August",
+      title: "Computer Vision Object Detection",
+      description: "Built production-ready object detection model",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "Achieved 94% accuracy, deployed in real-time systems",
+      technologies: ["YOLO", "TensorFlow", "Python", "OpenCV"]
+    },
+    {
+      year: "2022",
+      month: "October",
+      title: "NLP Chatbot Development",
+      description: "Implemented enterprise chatbot reducing customer service costs",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Reduced customer service costs by 30%, handles 1000+ queries daily",
+      technologies: ["NLP", "Transformers", "Python", "Flask"]
+    },
+    {
+      year: "2022",
+      month: "December",
+      title: "First Research Paper Published",
+      description: "Published research on transformer architectures",
+      type: "achievement",
+      icon: <Award className="w-4 h-4" />,
+      details: "Accepted at international AI conference, cited 50+ times",
+      technologies: ["Research", "Transformers", "Deep Learning"]
+    },
+    {
+      year: "2023",
+      month: "February",
+      title: "Financial Analytics Platform",
+      description: "Built real-time stock market analysis platform using ML",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "Processed 1M+ data points with 95% prediction accuracy",
+      technologies: ["Python", "Machine Learning", "Real-time Processing", "Financial APIs"]
+    },
+    {
+      year: "2023",
+      month: "April",
+      title: "Tech Conference Speaker",
+      description: "Started speaking at major tech conferences",
+      type: "activity",
+      icon: <Users className="w-4 h-4" />,
+      details: "Spoke at 5+ conferences on AI/ML topics, 500+ attendees each",
+      technologies: ["Public Speaking", "AI/ML", "Knowledge Sharing"]
+    },
+    {
+      year: "2023",
+      month: "May",
+      title: "B.Tech Graduation - First Class Honors",
+      description: "Graduated from Indian Institute of Technology",
+      type: "education",
+      icon: <GraduationCap className="w-4 h-4" />,
+      details: "CGPA: 8.7/10, President of Computer Science Society",
+      technologies: ["Computer Science", "Leadership", "Academic Excellence"]
+    },
+    {
+      year: "2023",
+      month: "July",
+      title: "Senior Full Stack Developer - TechCorp",
+      description: "Started full-time role leading development teams",
+      type: "work",
+      icon: <Briefcase className="w-4 h-4" />,
+      details: "Leading team of 5 developers, managing AI-powered applications",
+      technologies: ["React", "Node.js", "Team Leadership", "AI Integration"]
+    },
+    {
+      year: "2023",
+      month: "September",
+      title: "AWS ML Specialty Certification",
+      description: "Achieved AWS Machine Learning Specialty certification",
+      type: "certification",
+      icon: <Award className="w-4 h-4" />,
+      details: "Professional level certification in cloud ML services",
+      technologies: ["AWS", "Machine Learning", "Cloud Computing"]
+    },
+    {
+      year: "2023",
+      month: "November",
+      title: "Enterprise AI Chatbot",
+      description: "Developed enterprise-grade AI assistant",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Handles 10k+ queries daily with 94% satisfaction rate",
+      technologies: ["NLP", "Transformers", "Production ML", "Microservices"]
+    },
+    {
+      year: "2024",
+      month: "January",
+      title: "Computer Vision Quality Control",
+      description: "Built automated quality control system for manufacturing",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "Reduced defect detection time by 80%, deployed in 3 factories",
+      technologies: ["Computer Vision", "Industrial IoT", "Real-time Processing"]
+    },
+    {
+      year: "2024",
+      month: "March",
+      title: "15+ Hackathon Victories Milestone",
+      description: "Reached milestone of winning 15+ hackathons",
+      type: "achievement",
+      icon: <Trophy className="w-4 h-4" />,
+      details: "Including HackIndia, CodeStorm, Smart India Hackathon",
+      technologies: ["Problem Solving", "Innovation", "Team Leadership"]
+    },
+    {
+      year: "2024",
+      month: "June",
+      title: "Company Innovation Award",
+      description: "Received highest innovation award at TechCorp",
+      type: "achievement",
+      icon: <Award className="w-4 h-4" />,
+      details: "For AI-driven product development improving efficiency by 40%",
+      technologies: ["Innovation", "AI/ML", "Product Development"]
+    },
+    {
+      year: "2024",
+      month: "September",
+      title: "Open Source ML Framework",
+      description: "Released open-source ML framework for developers",
+      type: "project",
+      icon: <Code className="w-4 h-4" />,
+      details: "1000+ GitHub stars, used by 50+ companies",
+      technologies: ["Open Source", "Python", "ML Framework", "Community"]
+    },
+    {
+      year: "2025",
+      month: "January",
+      title: "Advanced AI Research Project",
+      description: "Leading research on next-generation AI architectures",
+      type: "project",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Exploring AGI concepts and multi-modal AI systems",
+      technologies: ["Advanced AI", "Research", "Multi-modal AI"]
+    },
+    {
+      year: "2025",
+      month: "June",
+      title: "Tech Leadership Role",
+      description: "Promoted to Technical Lead managing multiple teams",
+      type: "work",
+      icon: <Users className="w-4 h-4" />,
+      details: "Managing 20+ developers across 3 AI product teams",
+      technologies: ["Leadership", "Team Management", "Strategic Planning"]
+    },
+    {
+      year: "2026",
+      month: "January",
+      title: "AI Startup Co-founder",
+      description: "Co-founding AI startup focused on healthcare solutions",
+      type: "work",
+      icon: <Rocket className="w-4 h-4" />,
+      details: "Building next-gen AI solutions for medical diagnostics",
+      technologies: ["Entrepreneurship", "Healthcare AI", "Startup"]
+    },
+    {
+      year: "2026",
+      month: "June",
+      title: "PhD Research Commencement",
+      description: "Starting PhD in Artificial Intelligence",
+      type: "education",
+      icon: <BookOpen className="w-4 h-4" />,
+      details: "Research focus on Explainable AI and Medical Applications",
+      technologies: ["PhD Research", "Explainable AI", "Medical AI"]
+    }
+  ];
+
   // Education data
   const education = [
     {
@@ -76,182 +280,6 @@ const About = () => {
         "Published research paper on transformer architectures",
         "Optimized model inference time by 50%"
       ]
-    }
-  ];
-
-  // Internships data
-  const internships = [
-    {
-      role: "Machine Learning Engineer Intern",
-      company: "AI Innovations Inc.",
-      duration: "Jun 2022 - Dec 2022",
-      description: "Developed computer vision models and NLP solutions for production systems.",
-      achievements: [
-        "Built object detection model with 94% accuracy",
-        "Implemented NLP chatbot reducing customer service costs by 30%",
-        "Published research paper on transformer architectures"
-      ],
-      technologies: ["Python", "TensorFlow", "PyTorch", "OpenCV", "NLP"]
-    },
-    {
-      role: "Full Stack Developer Intern",
-      company: "StartupTech Solutions",
-      duration: "Jan 2021 - May 2021",
-      description: "Built responsive web applications and REST APIs for client projects.",
-      achievements: [
-        "Developed 3 full-stack web applications",
-        "Improved application performance by 45%",
-        "Mentored 2 junior interns"
-      ],
-      technologies: ["React", "Node.js", "MongoDB", "Express", "AWS"]
-    }
-  ];
-
-  // Enhanced Comprehensive Timeline with projects
-  const comprehensiveTimeline = [
-    {
-      year: "2017",
-      title: "Excellence in Academics",
-      description: "Graduated as Head Boy from Delhi Public School with 95.2%",
-      type: "education",
-      icon: <GraduationCap className="w-4 h-4" />,
-      details: "National Science Olympiad Winner"
-    },
-    {
-      year: "2019",
-      title: "IIT Journey Begins",
-      description: "Started Computer Science at Indian Institute of Technology",
-      type: "education",
-      icon: <BookOpen className="w-4 h-4" />,
-      details: "Secured admission through JEE Advanced"
-    },
-    {
-      year: "2020",
-      title: "First Hackathon Victory",
-      description: "Won Smart India Hackathon with AI-based healthcare solution",
-      type: "achievement",
-      icon: <Trophy className="w-4 h-4" />,
-      details: "Team lead for 6-member group"
-    },
-    {
-      year: "2020",
-      title: "E-Learning Platform Project",
-      description: "Built comprehensive online learning platform with React and Node.js",
-      type: "project",
-      icon: <Code className="w-4 h-4" />,
-      details: "Served 500+ students with video streaming and assessments"
-    },
-    {
-      year: "2020",
-      title: "Open Source Journey",
-      description: "Started contributing to open source projects",
-      type: "activity",
-      icon: <Code className="w-4 h-4" />,
-      details: "First contribution to TensorFlow community"
-    },
-    {
-      year: "2021",
-      title: "Healthcare AI Project",
-      description: "Developed ML model for early disease detection using medical imaging",
-      type: "project",
-      icon: <Rocket className="w-4 h-4" />,
-      details: "Achieved 92% accuracy in diagnostic predictions"
-    },
-    {
-      year: "2021",
-      title: "First Internship",
-      description: "Full Stack Developer Intern at StartupTech Solutions",
-      type: "internship",
-      icon: <Briefcase className="w-4 h-4" />,
-      details: "Built 3 production web applications"
-    },
-    {
-      year: "2021",
-      title: "Research Publication",
-      description: "Published first research paper on deep learning",
-      type: "achievement",
-      icon: <Award className="w-4 h-4" />,
-      details: "Accepted at international AI conference"
-    },
-    {
-      year: "2022",
-      title: "Smart City IoT Project",
-      description: "Led development of IoT-based traffic management system",
-      type: "project",
-      icon: <Rocket className="w-4 h-4" />,
-      details: "Reduced traffic congestion by 25% in pilot area"
-    },
-    {
-      year: "2022",
-      title: "ML Engineer Intern",
-      description: "Machine Learning Engineer Intern at AI Innovations Inc.",
-      type: "internship",
-      icon: <Rocket className="w-4 h-4" />,
-      details: "Developed production ML models"
-    },
-    {
-      year: "2022",
-      title: "Tech Speaker",
-      description: "Started speaking at tech conferences and workshops",
-      type: "activity",
-      icon: <Users className="w-4 h-4" />,
-      details: "Spoke at 5+ conferences on AI/ML topics"
-    },
-    {
-      year: "2022",
-      title: "Financial Analytics Platform",
-      description: "Built real-time stock market analysis platform using ML",
-      type: "project",
-      icon: <Code className="w-4 h-4" />,
-      details: "Processed 1M+ data points with 95% prediction accuracy"
-    },
-    {
-      year: "2023",
-      title: "Graduation & Full-time Role",
-      description: "Graduated from IIT and joined TechCorp Solutions as Senior Developer",
-      type: "work",
-      icon: <Briefcase className="w-4 h-4" />,
-      details: "CGPA: 8.7/10, First Class Honors"
-    },
-    {
-      year: "2023",
-      title: "AWS ML Certification",
-      description: "Achieved AWS Machine Learning Specialty certification",
-      type: "certification",
-      icon: <Award className="w-4 h-4" />,
-      details: "Professional level certification"
-    },
-    {
-      year: "2023",
-      title: "AI Chat Assistant Project",
-      description: "Developed enterprise-grade AI chatbot for customer service",
-      type: "project",
-      icon: <Rocket className="w-4 h-4" />,
-      details: "Handles 10k+ queries daily with 94% satisfaction rate"
-    },
-    {
-      year: "2024",
-      title: "Computer Vision Project",
-      description: "Built automated quality control system for manufacturing",
-      type: "project",
-      icon: <Code className="w-4 h-4" />,
-      details: "Reduced defect detection time by 80%"
-    },
-    {
-      year: "2024",
-      title: "15+ Hackathons Won",
-      description: "Reached milestone of winning 15+ national and international hackathons",
-      type: "achievement",
-      icon: <Trophy className="w-4 h-4" />,
-      details: "Including major hackathons like HackIndia, CodeStorm"
-    },
-    {
-      year: "2024",
-      title: "Innovation Award",
-      description: "Received company's highest innovation award",
-      type: "achievement",
-      icon: <Award className="w-4 h-4" />,
-      details: "For AI-driven product development"
     }
   ];
 
@@ -387,8 +415,8 @@ const About = () => {
   };
 
   const getFilteredTimeline = () => {
-    if (activeTimelineFilter === 'all') return comprehensiveTimeline;
-    return comprehensiveTimeline.filter(item => item.type === activeTimelineFilter);
+    if (activeTimelineFilter === 'all') return engineeringTimeline;
+    return engineeringTimeline.filter(item => item.type === activeTimelineFilter);
   };
 
   return (
@@ -422,13 +450,13 @@ const About = () => {
               Complete Profile
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Comprehensive overview of my journey, skills, and achievements in the world of technology and innovation.
+              Comprehensive overview of my engineering journey from 2022-2026, showcasing skills, projects, and achievements in technology and innovation.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Personal Information with Resume Button */}
+      {/* Personal Information */}
       <section id="personal" className="py-16 px-4 scroll-reveal">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -438,7 +466,7 @@ const About = () => {
           >
             <Card className="glass border-white/10">
               <CardHeader>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                   <CardTitle className="text-3xl font-orbitron gradient-text">Personal Information</CardTitle>
                   <Button 
                     onClick={() => setShowResume(!showResume)}
@@ -557,30 +585,29 @@ const About = () => {
         </div>
       </section>
 
-      {/* Enhanced Timeline Section */}
-      <section id="comprehensive-timeline" className="py-16 px-4 scroll-reveal">
+      {/* Engineering Journey Timeline (2022-2026) */}
+      <section id="engineering-timeline" className="py-16 px-4 scroll-reveal">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={isVisible['comprehensive-timeline'] ? { opacity: 1, y: 0 } : {}}
+            animate={isVisible['engineering-timeline'] ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-8 text-center">Complete Journey Timeline</h2>
+            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-8 text-center">Engineering Journey Timeline</h2>
             <p className="text-center text-gray-300 mb-12 text-lg">
-              Explore my educational background, internships, achievements, and project milestones
+              My complete engineering journey from 2022-2026: internships, projects, achievements, and career milestones
             </p>
             
             {/* Timeline Filters */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               {[
-                { key: 'all', label: 'All', color: 'bg-white' },
-                { key: 'education', label: 'Education', color: 'bg-cosmic-blue' },
+                { key: 'all', label: 'All Events', color: 'bg-white' },
                 { key: 'internship', label: 'Internships', color: 'bg-cosmic-purple' },
-                { key: 'work', label: 'Professional', color: 'bg-cosmic-cyan' },
                 { key: 'project', label: 'Projects', color: 'bg-orange-500' },
                 { key: 'achievement', label: 'Achievements', color: 'bg-yellow-500' },
-                { key: 'certification', label: 'Certifications', color: 'bg-green-500' },
-                { key: 'activity', label: 'Activities', color: 'bg-pink-500' }
+                { key: 'work', label: 'Professional', color: 'bg-cosmic-cyan' },
+                { key: 'education', label: 'Education', color: 'bg-cosmic-blue' },
+                { key: 'certification', label: 'Certifications', color: 'bg-green-500' }
               ].map((filter) => (
                 <button
                   key={filter.key}
@@ -600,13 +627,13 @@ const About = () => {
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cosmic-blue via-cosmic-purple to-cosmic-cyan opacity-50"></div>
               
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {getFilteredTimeline().map((item, index) => (
                   <motion.div
-                    key={`${item.year}-${item.title}`}
+                    key={`${item.year}-${item.month}-${item.title}`}
                     initial={{ opacity: 0, x: -50 }}
-                    animate={isVisible['comprehensive-timeline'] ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    animate={isVisible['engineering-timeline'] ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.05 }}
                     className="relative flex items-start space-x-6"
                   >
                     <div className={`flex-shrink-0 w-16 h-16 ${getTimelineColor(item.type)} rounded-full flex items-center justify-center relative z-10 shadow-lg`}>
@@ -615,19 +642,26 @@ const About = () => {
                     
                     <Card className="glass border-white/10 flex-1 hover:border-cosmic-blue/30 transition-all duration-300">
                       <CardHeader>
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <CardTitle className="text-lg text-white">{item.title}</CardTitle>
-                            <CardDescription className="text-cosmic-cyan">{item.description}</CardDescription>
-                            {item.details && (
-                              <p className="text-gray-400 text-sm mt-1">{item.details}</p>
+                        <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+                          <div className="flex-1">
+                            <CardTitle className="text-lg text-white mb-2">{item.title}</CardTitle>
+                            <CardDescription className="text-cosmic-cyan mb-2">{item.description}</CardDescription>
+                            <p className="text-gray-400 text-sm mb-3">{item.details}</p>
+                            {item.technologies && (
+                              <div className="flex flex-wrap gap-2">
+                                {item.technologies.map((tech, i) => (
+                                  <Badge key={i} variant="outline" className="border-cosmic-purple text-cosmic-purple text-xs">
+                                    {tech}
+                                  </Badge>
+                                ))}
+                              </div>
                             )}
                           </div>
-                          <div className="text-right">
-                            <Badge variant="outline" className="border-cosmic-purple text-cosmic-purple">
-                              {item.year}
+                          <div className="text-right flex-shrink-0">
+                            <Badge variant="outline" className="border-cosmic-blue text-cosmic-blue mb-1">
+                              {item.month} {item.year}
                             </Badge>
-                            <div className="text-xs text-gray-400 mt-1 capitalize">{item.type}</div>
+                            <div className="text-xs text-gray-400 capitalize">{item.type}</div>
                           </div>
                         </div>
                       </CardHeader>
@@ -635,140 +669,6 @@ const About = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Internships Section */}
-      <section id="internships" className="py-16 px-4 scroll-reveal">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.internships ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Internship Experience</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {internships.map((internship, index) => (
-                <Card key={index} className="glass border-white/10 hover:border-cosmic-purple/30 transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-xl text-white flex items-center space-x-3">
-                      <Briefcase className="w-6 h-6 text-cosmic-purple" />
-                      <span>{internship.role}</span>
-                    </CardTitle>
-                    <CardDescription className="text-cosmic-cyan">{internship.company} • {internship.duration}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-300 mb-4">{internship.description}</p>
-                    
-                    <div className="mb-4">
-                      <h4 className="text-white font-semibold mb-2">Key Achievements:</h4>
-                      <ul className="text-gray-300 space-y-1">
-                        {internship.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start space-x-2">
-                            <span className="text-cosmic-purple">✓</span>
-                            <span className="text-sm">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-white font-semibold mb-2">Technologies Used:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {internship.technologies.map((tech, i) => (
-                          <Badge key={i} variant="outline" className="border-cosmic-purple text-cosmic-purple text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Education */}
-      <section id="education" className="py-16 px-4 scroll-reveal">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.education ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Education</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {education.map((edu, index) => (
-                <Card key={index} className="glass border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-xl text-white flex items-center space-x-3">
-                      <GraduationCap className="w-6 h-6 text-cosmic-blue" />
-                      <span>{edu.degree}</span>
-                    </CardTitle>
-                    <CardDescription className="text-cosmic-cyan">{edu.institution}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-300">{edu.year}</span>
-                        <Badge variant="outline" className="border-cosmic-blue text-cosmic-blue">{edu.grade}</Badge>
-                      </div>
-                      <div>
-                        <h4 className="text-white font-semibold mb-2">Achievements:</h4>
-                        <ul className="text-gray-300 text-sm space-y-1">
-                          {edu.achievements.map((achievement, i) => (
-                            <li key={i} className="flex items-start space-x-2">
-                              <span className="text-cosmic-blue">•</span>
-                              <span>{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section id="experience" className="py-16 px-4 scroll-reveal">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.experience ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Professional Experience</h2>
-            <div className="space-y-8">
-              {experience.map((exp, index) => (
-                <Card key={index} className="glass border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-xl text-white">{exp.role}</CardTitle>
-                    <CardDescription className="text-cosmic-cyan">{exp.company} • {exp.duration}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-300 mb-4">{exp.description}</p>
-                    <div>
-                      <h4 className="text-white font-semibold mb-2">Key Achievements:</h4>
-                      <ul className="text-gray-300 space-y-2">
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start space-x-2">
-                            <span className="text-cosmic-blue">✓</span>
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </motion.div>
         </div>
@@ -827,10 +727,10 @@ const About = () => {
             animate={isVisible.certifications ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Certifications</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Professional Certifications</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {certifications.map((cert, index) => (
-                <Card key={index} className="glass border-white/10">
+                <Card key={index} className="glass border-white/10 hover:border-cosmic-cyan/30 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-lg text-white">{cert.name}</CardTitle>
                     <CardDescription className="text-cosmic-cyan">{cert.issuer}</CardDescription>
@@ -853,37 +753,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Achievements */}
-      <section id="achievements" className="py-16 px-4 scroll-reveal">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.achievements ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Achievements & Recognition</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {achievements.map((achievement, index) => (
-                <Card key={index} className="glass border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-lg text-white flex items-center space-x-3">
-                      <Award className="w-6 h-6 text-cosmic-blue" />
-                      <span>{achievement.title}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-300 mb-2">{achievement.description}</p>
-                    <Badge variant="outline" className="border-cosmic-purple text-cosmic-purple">
-                      {achievement.year}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Call to Action */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -893,10 +762,10 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-orbitron font-bold gradient-text mb-6">
-              Let's Build Something Amazing Together
+              Let's Build the Future Together
             </h2>
             <p className="text-gray-300 mb-8 text-lg">
-              Ready to collaborate on your next project? Let's connect and turn your ideas into reality.
+              Ready to collaborate on innovative AI and web solutions? Let's connect and transform your ideas into reality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
