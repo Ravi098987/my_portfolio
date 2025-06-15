@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -343,30 +344,6 @@ const About = () => {
     }
   ];
 
-  // Achievements data
-  const achievements = [
-    {
-      title: "15+ Hackathon Victories",
-      description: "Won over 15 national and international hackathons including Smart India Hackathon",
-      year: "2019-2024"
-    },
-    {
-      title: "Open Source Contributor",
-      description: "Contributed to 20+ open source projects with over 1000 GitHub stars",
-      year: "2020-2024"
-    },
-    {
-      title: "Research Publications",
-      description: "Published 5 research papers in top-tier AI and ML conferences",
-      year: "2021-2023"
-    },
-    {
-      title: "Tech Speaker",
-      description: "Speaker at 10+ tech conferences and workshops on AI/ML topics",
-      year: "2022-2024"
-    }
-  ];
-
   // Resume content
   const resumeContent = {
     summary: "Passionate Machine Learning Engineer and Full Stack Developer with 3+ years of experience building scalable AI solutions. Proven track record of 15+ hackathon victories and expertise in modern web technologies.",
@@ -382,8 +359,16 @@ const About = () => {
     ]
   };
 
-  // Scroll reveal effect
+  // Initialize visibility for all sections
   useEffect(() => {
+    // Set all sections as visible initially to avoid scroll reveal issues
+    setIsVisible({
+      personal: true,
+      'engineering-timeline': true,
+      'skills-detailed': true,
+      certifications: true
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -457,11 +442,11 @@ const About = () => {
       </section>
 
       {/* Personal Information */}
-      <section id="personal" className="py-16 px-4 scroll-reveal">
+      <section id="personal" className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.personal ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <Card className="glass border-white/10">
@@ -501,6 +486,22 @@ const About = () => {
                           <Mail className="w-5 h-5 text-cosmic-blue" />
                           <span className="text-gray-300">{personalInfo.email}</span>
                         </div>
+                      </div>
+
+                      {/* Contact Links */}
+                      <div className="flex space-x-4 mt-6">
+                        <Button variant="outline" size="sm" className="border-cosmic-blue text-cosmic-blue">
+                          <Github className="w-4 h-4 mr-2" />
+                          GitHub
+                        </Button>
+                        <Button variant="outline" size="sm" className="border-cosmic-cyan text-cosmic-cyan">
+                          <Linkedin className="w-4 h-4 mr-2" />
+                          LinkedIn
+                        </Button>
+                        <Button variant="outline" size="sm" className="border-cosmic-purple text-cosmic-purple">
+                          <Mail className="w-4 h-4 mr-2" />
+                          Email
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -586,11 +587,11 @@ const About = () => {
       </section>
 
       {/* Engineering Journey Timeline (2022-2026) */}
-      <section id="engineering-timeline" className="py-16 px-4 scroll-reveal">
+      <section id="engineering-timeline" className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={isVisible['engineering-timeline'] ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-orbitron font-bold gradient-text mb-8 text-center">Engineering Journey Timeline</h2>
@@ -632,7 +633,7 @@ const About = () => {
                   <motion.div
                     key={`${item.year}-${item.month}-${item.title}`}
                     initial={{ opacity: 0, x: -50 }}
-                    animate={isVisible['engineering-timeline'] ? { opacity: 1, x: 0 } : {}}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.05 }}
                     className="relative flex items-start space-x-6"
                   >
@@ -675,11 +676,11 @@ const About = () => {
       </section>
 
       {/* Technical Skills */}
-      <section id="skills-detailed" className="py-16 px-4 scroll-reveal">
+      <section id="skills-detailed" className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={isVisible['skills-detailed'] ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Technical Expertise</h2>
@@ -704,7 +705,7 @@ const About = () => {
                             <motion.div
                               className="bg-gradient-to-r from-cosmic-blue to-cosmic-purple h-2 rounded-full"
                               initial={{ width: 0 }}
-                              animate={isVisible['skills-detailed'] ? { width: `${skill.level}%` } : { width: 0 }}
+                              animate={{ width: `${skill.level}%` }}
                               transition={{ duration: 1, delay: index * 0.1 + i * 0.1 }}
                             />
                           </div>
@@ -720,11 +721,11 @@ const About = () => {
       </section>
 
       {/* Certifications */}
-      <section id="certifications" className="py-16 px-4 scroll-reveal">
+      <section id="certifications" className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={isVisible.certifications ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-orbitron font-bold gradient-text mb-12 text-center">Professional Certifications</h2>
