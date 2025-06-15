@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,6 +21,168 @@ const About = () => {
     bio: "Passionate developer with 3+ years of experience in machine learning and full-stack development. Specialized in building scalable AI solutions and modern web applications. Winner of 15+ hackathons and contributor to various open-source projects.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
   };
+
+  // Education data
+  const education = [
+    {
+      degree: "B.Tech in Computer Science",
+      institution: "Indian Institute of Technology",
+      year: "2019-2023",
+      grade: "CGPA: 8.7/10",
+      achievements: [
+        "Graduated with First Class Honors",
+        "President of Computer Science Society",
+        "Published 3 research papers in AI conferences",
+        "Led university hackathon team to national victory"
+      ]
+    },
+    {
+      degree: "Higher Secondary Education",
+      institution: "Delhi Public School",
+      year: "2017-2019",
+      grade: "95.2%",
+      achievements: [
+        "Top 1% in state board examinations",
+        "Winner of National Science Olympiad",
+        "Head Boy and Student Council President",
+        "Represented school in national programming contests"
+      ]
+    }
+  ];
+
+  // Experience data
+  const experience = [
+    {
+      role: "Senior Full Stack Developer",
+      company: "TechCorp Solutions",
+      duration: "2023 - Present",
+      description: "Leading development of AI-powered web applications and managing cross-functional teams.",
+      achievements: [
+        "Led team of 5 developers in building scalable microservices architecture",
+        "Implemented ML models that improved user engagement by 40%",
+        "Reduced application load time by 60% through optimization",
+        "Mentored 10+ junior developers and interns"
+      ]
+    },
+    {
+      role: "Machine Learning Engineer",
+      company: "AI Innovations Inc.",
+      duration: "2022 - 2023",
+      description: "Developed and deployed machine learning models for production systems.",
+      achievements: [
+        "Built computer vision models with 94% accuracy for object detection",
+        "Implemented NLP chatbot reducing customer service costs by 30%",
+        "Published research paper on transformer architectures",
+        "Optimized model inference time by 50%"
+      ]
+    }
+  ];
+
+  // Technical Skills data
+  const technicalSkills = {
+    "Programming Languages": [
+      { name: "Python", level: 95 },
+      { name: "JavaScript", level: 90 },
+      { name: "TypeScript", level: 85 },
+      { name: "Java", level: 80 },
+      { name: "C++", level: 75 }
+    ],
+    "Web Technologies": [
+      { name: "React", level: 92 },
+      { name: "Node.js", level: 88 },
+      { name: "Express.js", level: 85 },
+      { name: "Next.js", level: 80 },
+      { name: "HTML/CSS", level: 95 }
+    ],
+    "Machine Learning": [
+      { name: "TensorFlow", level: 90 },
+      { name: "PyTorch", level: 88 },
+      { name: "Scikit-learn", level: 92 },
+      { name: "OpenCV", level: 85 },
+      { name: "NLP", level: 82 }
+    ],
+    "Cloud & DevOps": [
+      { name: "AWS", level: 85 },
+      { name: "Docker", level: 80 },
+      { name: "Kubernetes", level: 75 },
+      { name: "CI/CD", level: 82 },
+      { name: "Git", level: 95 }
+    ]
+  };
+
+  // Certifications data
+  const certifications = [
+    {
+      name: "AWS Certified Machine Learning - Specialty",
+      issuer: "Amazon Web Services",
+      year: "2023",
+      credentialId: "AWS-ML-2023-001"
+    },
+    {
+      name: "Google Cloud Professional ML Engineer",
+      issuer: "Google Cloud",
+      year: "2023",
+      credentialId: "GCP-ML-2023-002"
+    },
+    {
+      name: "TensorFlow Developer Certificate",
+      issuer: "TensorFlow",
+      year: "2022",
+      credentialId: "TF-DEV-2022-003"
+    },
+    {
+      name: "React Advanced Certification",
+      issuer: "Meta",
+      year: "2022",
+      credentialId: "META-REACT-2022-004"
+    },
+    {
+      name: "Kubernetes Application Developer",
+      issuer: "CNCF",
+      year: "2023",
+      credentialId: "CNCF-K8S-2023-005"
+    },
+    {
+      name: "Python for Data Science",
+      issuer: "IBM",
+      year: "2021",
+      credentialId: "IBM-PY-2021-006"
+    }
+  ];
+
+  // Achievements data
+  const achievements = [
+    {
+      title: "15+ Hackathon Victories",
+      description: "Won over 15 national and international hackathons including Smart India Hackathon",
+      year: "2019-2024"
+    },
+    {
+      title: "Open Source Contributor",
+      description: "Contributed to 20+ open source projects with over 1000 GitHub stars",
+      year: "2020-2024"
+    },
+    {
+      title: "Research Publications",
+      description: "Published 5 research papers in top-tier AI and ML conferences",
+      year: "2021-2023"
+    },
+    {
+      title: "Tech Speaker",
+      description: "Speaker at 10+ tech conferences and workshops on AI/ML topics",
+      year: "2022-2024"
+    },
+    {
+      title: "Innovation Award",
+      description: "Received company's highest innovation award for AI-driven product development",
+      year: "2023"
+    },
+    {
+      title: "Mentorship Program",
+      description: "Successfully mentored 25+ students in their tech careers",
+      year: "2021-2024"
+    }
+  ];
 
   // Timeline data
   const timeline = [
