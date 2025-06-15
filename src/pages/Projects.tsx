@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import ProjectCard from '@/components/ProjectCard';
 import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import ProjectCard from '@/components/ProjectCard';
+import StarFieldCanvas from '@/components/StarField';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -92,42 +94,36 @@ const Projects = () => {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
-      {/* Navigation */}
-      <nav className="p-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link to="/" className="text-2xl font-orbitron font-bold gradient-text">
-            RS
-          </Link>
-          <div className="flex gap-6">
-            <Link to="/about" className="text-white hover:text-cosmic-blue transition-colors">
-              About
-            </Link>
-            <Link to="/projects" className="text-cosmic-blue">
-              Projects
-            </Link>
-            <Link to="/skills" className="text-white hover:text-cosmic-blue transition-colors">
-              Skills
-            </Link>
-            <Link to="/contact" className="text-white hover:text-cosmic-blue transition-colors">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </nav>
-
-      <div className="py-20 px-4">
+    <div className="min-h-screen text-white overflow-x-hidden">
+      <StarFieldCanvas />
+      
+      {/* Header */}
+      <section className="relative py-20 px-4">
         <div className="max-w-7xl mx-auto">
+          <div className="flex items-center mb-8">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              asChild
+              className="text-cosmic-cyan hover:text-white"
+            >
+              <Link to="/" className="flex items-center space-x-2">
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to Home</span>
+              </Link>
+            </Button>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-6xl font-orbitron font-bold gradient-text mb-8">
+            <h1 className="text-5xl md:text-7xl font-orbitron font-bold gradient-text mb-8">
               Project Galaxy
             </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-12">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
               Explore my constellation of projects, each one a unique journey through 
               innovation, problem-solving, and cutting-edge technology.
             </p>
@@ -149,14 +145,54 @@ const Projects = () => {
               ))}
             </div>
           </motion.div>
+        </div>
+      </section>
 
+      {/* Projects Grid */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <ProjectCard key={project.title} {...project} index={index} />
             ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl font-orbitron font-bold gradient-text mb-6">
+              Ready to Collaborate?
+            </h2>
+            <p className="text-gray-300 mb-8 text-lg">
+              Let's work together to bring your ideas to life with cutting-edge technology.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-cosmic-blue to-cosmic-purple hover:from-cosmic-purple hover:to-cosmic-cyan"
+                asChild
+              >
+                <Link to="/contact">Get In Touch</Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-cosmic-blue text-cosmic-blue hover:bg-cosmic-blue/10"
+                asChild
+              >
+                <Link to="/skills">View Skills</Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };
