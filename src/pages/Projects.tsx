@@ -8,10 +8,19 @@ import StarFieldCanvas from '@/components/StarField';
 import AdminPanel from '@/components/AdminPanel';
 import VisitorTracker from '@/components/VisitorTracker';
 
+interface Project {
+  title: string;
+  description: string;
+  techStack: string[];
+  category: string;
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const [projects, setProjects] = useState([
+  const [projects, setProjects] = useState<Project[]>([
     {
       title: "AI-Powered Recommendation Engine",
       description: "Built a sophisticated machine learning system using collaborative filtering and deep learning to provide personalized recommendations with 94% accuracy.",

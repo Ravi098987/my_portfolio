@@ -19,18 +19,22 @@ interface Project {
   liveUrl?: string;
 }
 
-interface Skill {
-  name: string;
-  level: number;
-  description: string;
-  category: string;
+interface SkillCategory {
+  title: string;
+  icon?: React.ReactElement;
+  color?: string;
+  skills: {
+    name: string;
+    level: number;
+    description: string;
+  }[];
 }
 
 interface AdminPanelProps {
   projects: Project[];
   onProjectsUpdate: (projects: Project[]) => void;
-  skills: { title: string; skills: Skill[] }[];
-  onSkillsUpdate: (skills: { title: string; skills: Skill[] }[]) => void;
+  skills: SkillCategory[];
+  onSkillsUpdate: (skills: SkillCategory[]) => void;
 }
 
 const AdminPanel = ({ projects, onProjectsUpdate, skills, onSkillsUpdate }: AdminPanelProps) => {
@@ -49,7 +53,7 @@ const AdminPanel = ({ projects, onProjectsUpdate, skills, onSkillsUpdate }: Admi
   });
   
   // Skill form state
-  const [skillForm, setSkillForm] = useState<Skill>({
+  const [skillForm, setSkillForm] = useState({
     name: '',
     level: 0,
     description: '',
@@ -103,11 +107,19 @@ const AdminPanel = ({ projects, onProjectsUpdate, skills, onSkillsUpdate }: Admi
     const categoryIndex = updatedSkills.findIndex(cat => cat.title === skillForm.category);
     
     if (categoryIndex !== -1) {
-      updatedSkills[categoryIndex].skills.push(skillForm);
+      updatedSkills[categoryIndex].skills.push({
+        name: skillForm.name,
+        level: skillForm.level,
+        description: skillForm.description
+      });
     } else {
       updatedSkills.push({
         title: skillForm.category,
-        skills: [skillForm]
+        skills: [{
+          name: skillForm.name,
+          level: skillForm.level,
+          description: skillForm.description
+        }]
       });
     }
     
@@ -239,12 +251,12 @@ const AdminPanel = ({ projects, onProjectsUpdate, skills, onSkillsUpdate }: Admi
                   
                   <Input
                     placeholder="GitHub URL (optional)"
-                    value={projectForm.githubUrl}
+                    value={projectForm.githubUrl || ''}
                     onChange={(e) => setProjectForm({ ...projectForm, githubUrl: e.target.value })}
                   />
                   <Input
                     placeholder="Live URL (optional)"
-                    value={projectForm.liveUrl}
+                    value={projectForm.liveUrl || ''}
                     onChange={(e) => setProjectForm({ ...projectForm, liveUrl: e.target.value })}
                   />
                   

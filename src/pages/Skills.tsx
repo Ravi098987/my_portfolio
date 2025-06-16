@@ -10,10 +10,21 @@ import StarFieldCanvas from '@/components/StarField';
 import AdminPanel from '@/components/AdminPanel';
 import VisitorTracker from '@/components/VisitorTracker';
 
+interface SkillCategory {
+  title: string;
+  icon?: React.ReactElement;
+  color?: string;
+  skills: {
+    name: string;
+    level: number;
+    description: string;
+  }[];
+}
+
 const Skills = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
 
-  const [skillCategories, setSkillCategories] = useState([
+  const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([
     {
       title: "Machine Learning & AI",
       icon: <Brain className="w-6 h-6" />,
@@ -173,9 +184,11 @@ const Skills = () => {
                 <Card className="glass border-white/10 h-full">
                   <CardHeader>
                     <CardTitle className="text-2xl text-white flex items-center space-x-3">
-                      <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color}`}>
-                        {category.icon}
-                      </div>
+                      {category.icon && category.color && (
+                        <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color}`}>
+                          {category.icon}
+                        </div>
+                      )}
                       <span>{category.title}</span>
                     </CardTitle>
                     <CardDescription className="text-gray-300">
