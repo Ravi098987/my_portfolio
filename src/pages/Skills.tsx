@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -8,11 +7,13 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Code, Brain, Globe, Cloud, Database, Smartphone, ArrowLeft } from 'lucide-react';
 import StarFieldCanvas from '@/components/StarField';
+import AdminPanel from '@/components/AdminPanel';
+import VisitorTracker from '@/components/VisitorTracker';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
 
-  const skillCategories = [
+  const [skillCategories, setSkillCategories] = useState([
     {
       title: "Machine Learning & AI",
       icon: <Brain className="w-6 h-6" />,
@@ -91,7 +92,7 @@ const Skills = () => {
         { name: "Vercel", level: 85, description: "Deployment platform" }
       ]
     }
-  ];
+  ]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -113,8 +114,16 @@ const Skills = () => {
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden">
+      <VisitorTracker />
       <StarFieldCanvas />
       
+      <AdminPanel 
+        projects={[]}
+        onProjectsUpdate={() => {}}
+        skills={skillCategories}
+        onSkillsUpdate={setSkillCategories}
+      />
+
       {/* Header */}
       <section className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">

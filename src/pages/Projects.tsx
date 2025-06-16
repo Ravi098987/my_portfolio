@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -6,11 +5,13 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
 import StarFieldCanvas from '@/components/StarField';
+import AdminPanel from '@/components/AdminPanel';
+import VisitorTracker from '@/components/VisitorTracker';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const projects = [
+  const [projects, setProjects] = useState([
     {
       title: "AI-Powered Recommendation Engine",
       description: "Built a sophisticated machine learning system using collaborative filtering and deep learning to provide personalized recommendations with 94% accuracy.",
@@ -85,7 +86,7 @@ const Projects = () => {
       category: "Hackathons",
       githubUrl: "https://github.com/ravishankar-singh/iot-monitor"
     }
-  ];
+  ]);
 
   const categories = ['All', 'Machine Learning', 'Full Stack', 'Hackathons'];
 
@@ -95,8 +96,16 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden">
+      <VisitorTracker />
       <StarFieldCanvas />
       
+      <AdminPanel 
+        projects={projects}
+        onProjectsUpdate={setProjects}
+        skills={[]}
+        onSkillsUpdate={() => {}}
+      />
+
       {/* Header */}
       <section className="relative py-20 px-4">
         <div className="max-w-7xl mx-auto">
